@@ -76,7 +76,7 @@ def main():
         print("Update script updated. Please run it again.")
         sys.exit()
 
-    file_list = [
+    file_list_pipeline = [
         "scripts/common_aDNA_scripts.py",    
         "scripts/pipeline_aDNA.py",
         "scripts/common/config_manager.py",
@@ -87,6 +87,7 @@ def main():
         "scripts/common/common_logging.py",
         "scripts/common/common_config_enumerations.py",
     
+        "scripts/raw_reads_processing/common_raw_reads_processing_helpers.py",
         "scripts/raw_reads_processing/quality_checking/execute_multiqc.py",
         "scripts/raw_reads_processing/quality_checking/execute_fastqc.py",
         "scripts/raw_reads_processing/polish_fastp_quality_filter.py",
@@ -102,6 +103,7 @@ def main():
         "scripts/raw_reads_processing/analysis/contamination/check_contamination_centrifuge.py",
         "scripts/raw_reads_processing/analysis/contamination/check_contamination_kraken.py",
 
+        "scripts/ref_genome_processing/common_ref_genome_processing_helpers.py",
         "scripts/ref_genome_processing/map_aDNA_to_refgenome.py",
         "scripts/ref_genome_processing/convert_mapped_sam2bam.py",
         "scripts/ref_genome_processing/prepare_species_for_map_to_ref_genome.py",
@@ -164,7 +166,47 @@ def main():
 
     ]
 
-    for file in file_list:
+    file_list_project_data = [
+        "Bger/resources/rename_step1_runID_to_individual.csv",
+        "Bger/resources/rename_step2_folder_to_lane.csv",
+        "Bger/resources/rename_step3_run.csv",
+        "Bger/resources/rename_step4_remove_001.csv",
+        "Bger/raw/mtdna/marker_coi.fasta",
+
+        "trial_Mmus/raw/mtdna/marker_12S_rRNA.fasta",
+        "trial_Mmus/raw/mtdna/marker_16S_rRNA.fasta",
+        "trial_Mmus/raw/mtdna/marker_ATP6.fasta",
+        "trial_Mmus/raw/mtdna/marker_ATP8.fasta",
+        "trial_Mmus/raw/mtdna/marker_COI.fasta",
+        "trial_Mmus/raw/mtdna/marker_COX2.fasta",
+        "trial_Mmus/raw/mtdna/marker_COX3.fasta",
+        "trial_Mmus/raw/mtdna/marker_Cyb561.fasta",
+        "trial_Mmus/raw/mtdna/marker_cytochrome_b.fasta",
+        "trial_Mmus/raw/mtdna/marker_ND1.fasta",
+        "trial_Mmus/raw/mtdna/marker_ND2.fasta",
+        "trial_Mmus/raw/mtdna/marker_ND3.fasta",
+        "trial_Mmus/raw/mtdna/marker_ND4.fasta",
+        "trial_Mmus/raw/mtdna/marker_ND4L.fasta",
+        "trial_Mmus/raw/mtdna/marker_ND5.fasta",
+        "trial_Mmus/raw/mtdna/marker_ND6.fasta",
+        "trial_Mmus/raw/mtdna/marker_Ptgs2.fasta",
+
+        "trial_Phortica/raw/mtdna/marker_28S.fasta",
+        "trial_Phortica/raw/mtdna/marker_COI3.fasta",
+        "trial_Phortica/raw/mtdna/marker_COI5.fasta",
+        "trial_Phortica/raw/mtdna/marker_NC_081078.fasta",
+        "trial_Phortica/raw/mtdna/marker_ND2.fasta",
+
+        "resources/rename.py",
+        "resources/rename.csv"
+    ]
+
+    for file in file_list_pipeline:
+        file_url = f"{base_url}/{file}"
+        target_file = os.path.join(os.getcwd(), file)
+        download_files(file_url, target_file, args.force_update)
+
+    for file in file_list_project_data:
         file_url = f"{base_url}/{file}"
         target_file = os.path.join(os.getcwd(), file)
         download_files(file_url, target_file, args.force_update)
