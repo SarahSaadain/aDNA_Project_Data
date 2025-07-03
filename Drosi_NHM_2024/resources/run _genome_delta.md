@@ -104,8 +104,6 @@ Each of these commands will:
 * Continue running even if the terminal is closed (`nohup`)
 * Save all standard output and errors to a log file (`run_<species>.log`)
 
-Let me know if you want this wrapped into a single script to launch all five jobs at once.
-
 ### **Dbus**
 
 ```bash
