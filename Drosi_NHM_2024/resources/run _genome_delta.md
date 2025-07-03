@@ -37,7 +37,7 @@ Command template:
 ```bash
 bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/<species>/processed/<ref_genome_file_wo_extension>/mapped/<species>_combined.fastq_<ref_genome_file_wo_extension>_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/<ref_genome_file> \
+  --fa /mnt/data5/sarah/aDNA/<species>/raw/ref_genome/<ref_genome_file> \
   --of /mnt/data5/sarah/GenomeDelta_run<species> \
   --t 15
 ```
@@ -49,7 +49,7 @@ Here's a list of the full `bash` command for each species, with the correct subs
 ```bash
 bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus_combined.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDbus \
   --t 15
 ```
@@ -59,7 +59,7 @@ bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun_combined.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDfun \
   --t 15
 ```
@@ -69,7 +69,7 @@ bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep_combined.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDrep \
   --t 15
 ```
@@ -79,7 +79,7 @@ bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis_combined.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDhis \
   --t 15
 ```
@@ -89,7 +89,7 @@ bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm_combined.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDimm \
   --t 15
 ```
@@ -111,7 +111,7 @@ Let me know if you want this wrapped into a single script to launch all five job
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus_combined.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDbus \
   --t 15 > /mnt/data5/sarah/GenomeDelta_runDbus/run_Dbus.log 2>&1 &
 ```
@@ -121,7 +121,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun_combined.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDfun \
   --t 15 > /mnt/data5/sarah/GenomeDelta_runDfun/run_Dfun.log 2>&1 &
 ```
@@ -131,7 +131,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep_combined.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDrep \
   --t 15 > /mnt/data5/sarah/GenomeDelta_runDrep/run_Drep.log 2>&1 &
 ```
@@ -141,7 +141,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis_combined.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDhis \
   --t 15 > /mnt/data5/sarah/GenomeDelta_runDhis/run_Dhis.log 2>&1 &
 ```
@@ -151,7 +151,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm_combined.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/GenomeDelta_runDimm \
   --t 15 > /mnt/data5/sarah/GenomeDelta_runDimm/run_Dimm.log 2>&1 &
 ```
