@@ -96,7 +96,7 @@ bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 
 ## With nohup
 
-Here’s the updated list of commands using `nohup` to run them in the background, redirecting output to a log file at `/mnt/data5/sarah/GenomeDelta_run<species>/run_<species>.log`
+Below is the list of commands using `nohup` to run them in the background, redirecting output to a log file at `/mnt/data5/sarah/GenomeDelta_run<species>/run_<species>.log`
 
 Each of these commands will:
 
