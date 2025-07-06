@@ -60,10 +60,11 @@ Use below command to zip all files.
 nohup find . -type f -name "*.fastq" -exec gzip {} \; > gzip_log.txt 2>&1 &
 ```
 
-Command to remove all .fastq files (after gzip is done):
+Command to remove all .fastq and *.sra files (after gzip is done):
 
 ```bash
 find . -type f -name "*.fastq" -delete
+find . -type f -name "*.sra" -delete
 ```
 
 # Pre Checking
