@@ -9,12 +9,18 @@ for fasta in */file-GD-candidates.fasta; do
     folder=$(dirname "$fasta")
     
     # Set the output directory
-    output_dir="blast_results/$folder"
-
+    output_dir_blast="blast_results/$folder"
     # Make the output directory if it doesn't exist
-    mkdir -p "$output_dir"
+    mkdir -p "$output_dir_blast"
 
-    # Run the BLAST script
     echo "Running BLAST for $fasta..."
-    python blast_fasta_against_ncbi.py "$fasta" "$output_dir"
+    python blast_fasta_against_ncbi.py "$fasta" "$output_dir_blast"
+
+    # Set the output directory
+    output_dir_dfam="dfam_results/$folder"
+    # Make the output directory if it doesn't exist
+    mkdir -p "$output_dir_dfam"
+
+    echo "Running DFAM for $fasta..."
+    python blast_fasta_against_dfam.py "$fasta" "$output_dir_dfam"
 done
