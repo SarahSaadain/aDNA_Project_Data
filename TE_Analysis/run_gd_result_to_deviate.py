@@ -3,6 +3,7 @@ import glob
 import subprocess
 from collections import defaultdict
 import sys
+from Bio import SeqIO
 
 def run_fastp(input_fasta, output_fastq, species, work_dir):
     """Run fastp deduplication inside the species-specific folder."""
@@ -39,12 +40,17 @@ def run_deviate(fastq_path, work_dir):
     except subprocess.CalledProcessError as e:
         print(f"  ❌ deviaTE failed in {work_dir}: {e}")
 
+# Dummy quality score (same length as sequence, using "I" = high quality)
+def make_dummy_quality(seq):
+    return [40] * len(seq)  # 40 corresponds to ASCII "I" in Phred+33
+
 def process_species(species, file_list, output_base_dir):
     """Combine FASTA files and run deduplication + deviaTE for a species."""
     species_dir = os.path.join(output_base_dir, species)
     os.makedirs(species_dir, exist_ok=True)
 
     combined_path = os.path.join(species_dir, f"{species}_combined_candidates.fasta")
+    combined_fastq = os.path.join(species_dir, f"{species}_combined_candidates.fastq")
     dedup_fastq = os.path.join(species_dir, f"{species}_deduplicated_candidates.fastq")
 
     print(f"\n🔬 Processing species: {species} ({len(file_list)} files)")
@@ -69,11 +75,21 @@ def process_species(species, file_list, output_base_dir):
                             outfile.write(line)
         print(f"  ✔ Combined FASTA saved to: {combined_path}")
 
+
+    if not os.path.exists(combined_path):
+        sys.exit(f"❌ Combined FASTA file not found: {combined_path}")
+    else:
+        # Read FASTA and write to FASTQ with fake quality
+        with open(combined_fastq, "w") as out_handle:
+            for record in SeqIO.parse(combined_path, "fasta"):
+                record.letter_annotations["phred_quality"] = make_dummy_quality(record.seq)
+                SeqIO.write(record, out_handle, "fastq")
+
     # Deduplicate if needed
     if os.path.exists(dedup_fastq):
         print(f"  ⏩ Skipping deduplication: {dedup_fastq} already exists.")
     else:
-        success = run_fastp(combined_path, dedup_fastq, species, species_dir)
+        success = run_fastp(combined_fastq, dedup_fastq, species, species_dir)
         if not success:
             return  # Skip deviaTE if fastp failed
 
