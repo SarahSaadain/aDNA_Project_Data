@@ -28,6 +28,6 @@ for fasta in /mnt/data5/sarah/aDNA/D*/raw/ref_genome/*.fna; do
 
     echo "Running BUSCO on $fasta → $output_dir_busco"
 
-    nohup python -u /home/sarah/miniconda3/bin/busco  --in $fasta --out $output_dir_busco -l $dataset_path -m genome -c 16 > $log_path 2>&1 &
+    nohup python -u /home/sarah/miniconda3/bin/busco  --in $fasta --out $output_dir_busco -l $dataset_path -m genome -c 16 -f > $log_path 2>&1 &
 
 done
