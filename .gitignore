@@ -10,7 +10,6 @@ aDNA.code-workspace
 results/
 __pycache__
 sequencing_data/
-config.yaml
 fetch_results.sh
 update_roco_scripts.sh
 analysis_no_pipeline/
