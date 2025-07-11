@@ -27,7 +27,7 @@ DFAM mostly takes more time.
 
 # Analysis of gaps by species accross individuals
 
-To check mathces accross individuals, I want to compare all gaps with each other.
+To check matches accross individuals, I want to compare all gaps with each other.
 
 Run [run_combine_gaps_fasta_per_species.py](run_combine_gaps_fasta_per_species.py) to collect all gaps fasta files and combine them by species. During combining the individual ID/name is added to the sequence header.
 
