@@ -84,6 +84,8 @@ Dhis	cluster_5841.fasta	5	5	no	yes
 Dhis	cluster_27049.fasta	5	5	no	no
 ```
 
+Unique_individual: first is # of sequences second is # of individuals
+
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Dhis GenomeDeltaResult/Dbus GenomeDeltaResult/Dimm GenomeDeltaResult/Dfun GenomeDeltaResult/Dsim GenomeDeltaResult/Drep --min 5 --only-dfam-hits
 ```
