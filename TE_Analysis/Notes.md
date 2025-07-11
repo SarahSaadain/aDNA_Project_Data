@@ -6,7 +6,7 @@
 
 Use: 
 * [run_ncbi_dfam_analysis.sh](run_ncbi_dfam_analysis.sh) to call
-* [heck_fasta_against_ncbi.py](check_fasta_against_ncbi.py)
+* [check_fasta_against_ncbi.py](check_fasta_against_ncbi.py)
 * [check_fasta_against_dfam.py](check_fasta_against_dfam.py)
 
 
