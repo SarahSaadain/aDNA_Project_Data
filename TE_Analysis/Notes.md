@@ -68,7 +68,7 @@ If this is used on an individual GD folder, the number of individuals is always 
 Sample output:
 
 ```
-Species	Cluster	Sequences	Unique_Individuals	DFAM_Hit	DFAM_Tandem
+Species	Cluster	          Sequences	Unique_Individuals	DFAM_Hit	DFAM_Tandem
 Dhis	cluster_17090.fasta	10	5	yes	no
 Dhis	cluster_17183.fasta	5	5	no	yes
 Dhis	cluster_21602.fasta	5	5	no	yes
