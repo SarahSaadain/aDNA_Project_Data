@@ -9,9 +9,21 @@ Use:
 * [heck_fasta_against_ncbi.py](check_fasta_against_ncbi.py)
 * [check_fasta_against_dfam.py](check_fasta_against_dfam.py)
 
+
 ```bash
 nohup bash run_ncbi_dfam_analysis.sh > ncbi_dfam_analysis.log 2>&1 &
 ```
+
+## NCBI
+This will perform a request against NCBI Blast using the python library. The results are stored in `NCBI_Analysis`
+
+## DFAM
+This will perform a request against DFAM API using HTTP (python request library). This is a multi step process:
+
+1. send request with sequence to DFAM API. This returns a unique ID for the job.
+2. request status with the unique ID. Once the job is done, this will return the result. Otherwise, a status message is returned.
+
+DFAM mostly takes more time.
 
 # Analysis of gaps by species accross individuals
 
@@ -45,9 +57,13 @@ After GD is finished, we can run NCBI Blast and Dfam checks.
 
 # Analyze clusters
 
-```bash
-python run_analyse_clusters.py GenomeDeltaResult/Dhis GenomeDeltaResult/Dbus GenomeDeltaResult/Dimm GenomeDeltaResult/Dfun GenomeDeltaResult/Dsim GenomeDeltaResult/Drep --min 5 --only-dfam-hits
-```
+Related to the combined analysis, i want to know if there are clusters with multiple individuals. Also i want to know which clusters have a DFAM hit and which clusters dont.
+
+Run [run_analyse_clusters.py](run_analyse_clusters.py) to get a list of all clusters for one or many Result folders. It also compares it to DFAM hits and checks if the relevant cluster has a hit. If the DFAM hit is not found, it will say `error`. So its good to make sure the DFAM has finished before analysing the data.
+
+Use optional parameters `--min 5 --only-dfam-hits`to filter for clusters with a minimum number of individuals and only show clusters with dfam hits.
+
+If this is used on an individual GD folder, the number of individuals is always 1!
 
 Sample output:
 
@@ -68,9 +84,17 @@ Dhis	cluster_5841.fasta	5	5	no	yes
 Dhis	cluster_27049.fasta	5	5	no	no
 ```
 
+```bash
+python run_analyse_clusters.py GenomeDeltaResult/Dhis GenomeDeltaResult/Dbus GenomeDeltaResult/Dimm GenomeDeltaResult/Dfun GenomeDeltaResult/Dsim GenomeDeltaResult/Drep --min 5 --only-dfam-hits
+```
+
 # TE Candidate Processing with DeviaTE
 
-[run_gd_result_to_deviate.py](run_gd_result_to_deviate.py)
+https://github.com/W-L/deviaTE 
+
+Run [run_gd_result_to_deviate.py](run_gd_result_to_deviate.py) to map sequences against known TEs.
+
+Initially 
 
 ```bash
 nohup python -u run_gd_result_to_deviate_candidates.py > deviate_candidates.log 2>&1 &
@@ -80,7 +104,7 @@ nohup python -u run_gd_result_to_deviate_candidates.py > deviate_candidates.log 
 nohup python -u run_gd_result_to_deviate_all_gaps.py > deviate_all_gaps.log 2>&1 &
 ```
 
-## Processing Workflow (Per Species)
+## Processing Workflow of run_gd_result_to_deviate_candidates (Per Species)
 
 For each species (e.g. `DSIM`, `DFUN`, ...), the script performs:
 
@@ -107,20 +131,21 @@ For each species (e.g. `DSIM`, `DFUN`, ...), the script performs:
 
    * Passes the deduplicated `.fastq` to `deviaTE`:
 
-     ```bash
-     deviaTE --input species_deduplicated_candidates.fastq
-     ```
+## Processing Workflow of run_gd_result_to_deviate_all_gaps (Per Species)
 
-5. **Organize Output**
+For each species GD result folder, the script performs:
 
-   * All results for a species are saved under:
+1. **Gather Input Files**
 
-     ```
-     deviate/species/
-     ├── species_combined_candidates.fasta
-     ├── species_deduplicated_candidates.fastq
-     └── deviaTE results
-     ```
+   * Scans `GenomeDeltaResult/*/file-GD.fasta` (= all gaps)
+
+2. **Deduplicate**
+
+   * Runs `fastp` with deduplication enabled
+
+3. **Run deviaTE**
+
+   * Passes the deduplicated `.fastq` to `deviaTE`:
 
 ## Notes
 
@@ -142,12 +167,16 @@ deviate/
 
 ## Single copy gene normalization with DeviaTE
 
+For Dmel DeviaTE provides out of the box SCG. See here:
+
 https://github.com/W-L/deviaTE/tree/master?tab=readme-ov-file#normalization-methods
 https://github.com/W-L/deviaTE/tree/master?tab=readme-ov-file#special-use-case-drosophila
 
+This is what i used to run it.
+
 ## Single copy gene with Busco
 
-Not required for drosophila:
+Not required for drosophila, here we use out of the box single copy gene isntead!
 
 Here's a breakdown of the most relevant files/directories:
 
@@ -165,6 +194,8 @@ Here's a breakdown of the most relevant files/directories:
 
 
 ## Get single copy gene for all speceis
+
+Run [get_single_copy_gene.py](get_single_copy_gene.py) to extract first single copy gene.
 
 ```bash
 python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dbus/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna
