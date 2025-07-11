@@ -84,7 +84,14 @@ Dhis	cluster_5841.fasta	5	5	no	yes
 Dhis	cluster_27049.fasta	5	5	no	no
 ```
 
-Unique_individual: first is # of sequences second is # of individuals
+Columns: 
+
+- Species: species ID
+- Cluster: cluster file
+- Sequences: # of sequences in the cluster
+- Unique_Individuals: # number of unique individuals in the cluster 
+- DFAM_Hit: cluster has a DFAM hit
+- DFAM_Tandem: cluster has a DFAM tandem repeat
 
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Dhis GenomeDeltaResult/Dbus GenomeDeltaResult/Dimm GenomeDeltaResult/Dfun GenomeDeltaResult/Dsim GenomeDeltaResult/Drep --min 5 --only-dfam-hits
