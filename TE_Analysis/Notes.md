@@ -86,7 +86,14 @@ If this is used on an individual GD folder, the number of individuals is always 
 | **DFAM\_Hit**           | Indicates whether the cluster matches a DFAM entry (likely a transposable element or repeat). `yes` or `no`.                                                                                                                                         |
 | **DFAM\_Tandem**        | Indicates if the DFAM hit is a **tandem repeat** (repeats occurring adjacent to each other). `yes` or `no`.                                                                                                                                          |
 | **Individuals**         | Comma-separated list of all unique individuals contributing to the cluster.                                                                                                                                                                          |
-| **Regions**             | Comma-separated list of genomic regions (coordinates) corresponding to sequences in the cluster. Format: `scaffold:start-end`. If multiple sequences from an individual map to overlapping regions, these may be merged to a single coordinate span. |
+| **Regions**             | Comma-separated list of genomic regions (coordinates) corresponding to sequences in the cluster. Format: `scaffold:start-end`. If multiple sequences from an individual map to overlapping regions, these may be merged to a single coordinate span.
+
+**Note:** This region is the base for the GenomeDelta cluster but it is not identical. The consensus sequence from this cluster can have a different length than the region, but it will definately lie in the mentioned region. This is due to how GenomeDelta handles the creation of the consensus sequence. If one sequence of the cluster is bigger than the others, during alignment this can lead to `-` characters in the MSA file. If there are more `-` characters than NT during comparison of one Base, the Base will be omitted. If that happens on the beginning and/or on the end, the consensus sequence will be shorter than the source sequences. Du to this, it is not possible to give the exact region for the TE hit from Dfam.
+| **TE\_Descriptions** | Quoted description(s) of transposable element(s) hit (e.g., `"FW2_DM is a non-LTR retrotransposon"`).                                                     |
+| **TE\_Coordinates**  | Coordinates in the consensus sequence of the TE hit, in `start-end` format. Adjusted for strand (reverse strand reports coordinates in descending order). |
+| **TE\_Strand**       | Strand of the TE hit: `"+"` or `"-"`.                                                                                                                     |
+| **TE\_Bit\_Score**   | Bit score of the DFAM match — reflects match quality.                                                                                                     |
+
 
 ## Sample output for run_analyse_clusters.py
 
@@ -126,19 +133,15 @@ python run_analyse_clusters.py GenomeDeltaResult/Bgca --min_individuals 1 --only
 
 https://github.com/W-L/deviaTE 
 
-Run [run_gd_result_to_deviate.py](run_gd_result_to_deviate.py) to map sequences against known TEs.
+## DeviaTE for candidates 
 
-Initially 
-
-```bash
-nohup python -u run_gd_result_to_deviate_candidates.py > deviate_candidates.log 2>&1 &
-```
+Run [run_gd_result_to_deviate_candidates.py](run_gd_result_to_deviate_candidates.py) to map sequences against known TEs. The candidates are combined by species
 
 ```bash
-nohup python -u run_gd_result_to_deviate_all_gaps.py > deviate_all_gaps.log 2>&1 &
+nohup python -u run_gd_result_to_deviate_candidates.py --scg_dir . --library_base deviate_transposon_sequence_set_v10.2.fa > deviate_candidates.log 2>&1 &
 ```
 
-## Processing Workflow of run_gd_result_to_deviate_candidates (Per Species)
+### Processing Workflow of run_gd_result_to_deviate_candidates.py (Per Species)
 
 For each species (e.g. `DSIM`, `DFUN`, ...), the script performs:
 
@@ -156,16 +159,30 @@ For each species (e.g. `DSIM`, `DFUN`, ...), the script performs:
      >Dsim01|original_header
      ```
 
-3. **Deduplicate**
+3. **Single Copy Gene**
+
+   * Use `<species>_scg_<busco_id>_nt.fa` if availble. 
+   * The SCG sequences are added to library provided by `--library_base`
+   * The SCG sequences are added to fasta file for processing in DeviaTE
+
+4. **Deduplicate**
 
    * Runs `fastp` with deduplication enabled
    * Produces a single deduplicated `.fastq` file per species
 
-4. **Run deviaTE**
+5. **Run deviaTE**
 
    * Passes the deduplicated `.fastq` to `deviaTE`:
 
-## Processing Workflow of run_gd_result_to_deviate_all_gaps (Per Species)
+## DeviaTE for individuals and all gaps 
+
+Run [run_gd_result_to_deviate_individual_all_gaps.py](run_gd_result_to_deviate_individual_all_gaps.py) to map all gaps of individuals against known TEs. The candidates are combined by species
+
+```bash
+nohup python -u run_gd_result_to_deviate_individual_all_gaps.py > deviate_individual_all_gaps.log --scg_dir . --library_base deviate_transposon_sequence_set_v10.2.fa 2>&1 &
+```
+
+### Processing Workflow of run_gd_result_to_deviate_individual_all_gaps.py (Per Species)
 
 For each species GD result folder, the script performs:
 
@@ -173,31 +190,19 @@ For each species GD result folder, the script performs:
 
    * Scans `GenomeDeltaResult/*/file-GD.fasta` (= all gaps)
 
-2. **Deduplicate**
+2. **Single Copy Gene**
+
+   * Use `<species>_scg_<busco_id>_nt.fa` if availble. 
+   * The SCG sequences are added to library provided by `--library_base`
+   * The SCG sequences are added to fasta file for processing in DeviaTE
+
+3. **Deduplicate**
 
    * Runs `fastp` with deduplication enabled
 
-3. **Run deviaTE**
+4. **Run deviaTE**
 
    * Passes the deduplicated `.fastq` to `deviaTE`:
-
-## Notes
-
-* Skips steps if output files already exist
-* Stops execution if any expected input file is missing
-* Creates output folders automatically
-
-## Example Output Structure
-
-```
-deviate/
-├── Dsim/
-│   ├── Dsim_combined_candidates.fasta
-│   ├── Dsim_deduplicated_candidates.fastq
-│   └── deviaTE output
-├── Dfun/
-│   └── ...
-```
 
 ## Single copy gene normalization with DeviaTE
 
@@ -206,11 +211,7 @@ For Dmel DeviaTE provides out of the box SCG. See here:
 https://github.com/W-L/deviaTE/tree/master?tab=readme-ov-file#normalization-methods
 https://github.com/W-L/deviaTE/tree/master?tab=readme-ov-file#special-use-case-drosophila
 
-This is what i used to run it.
-
 ## Single copy gene with Busco
-
-Not required for drosophila, here we use out of the box single copy gene isntead!
 
 Here's a breakdown of the most relevant files/directories:
 
@@ -226,22 +227,32 @@ Here's a breakdown of the most relevant files/directories:
 * **`short_summary.txt`** and **`.json`**
   👉 These provide a summary of how many BUSCOs were found as single-copy, duplicated, etc.
 
-
 ## Get single copy gene for all speceis
 
 Run [get_single_copy_gene.py](get_single_copy_gene.py) to extract first single copy gene.
 
 ```bash
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dbus/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dbus/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna --prefix Dbus_scg
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dfun/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dfun/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna --prefix Dfun_scg
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Drep/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Drep/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna --prefix Drep_scg
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dhis/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dhis/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna --prefix Dhis_scg
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dimm/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dimm/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna --prefix Dimm_scg
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dsim/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dsim/raw/ref_genome/GCF_016746395.2_Prin_Dsim_3.1_genomic.fna
-
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dsim/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dsim/raw/ref_genome/GCF_016746395.2_Prin_Dsim_3.1_genomic.fna --prefix Dsim_scg
 ```
+
+Above commands create these files (`<species>_scg_<busco_id>_nt.fa`):
+
+* Dbus_scg_11at7214_nt.fa
+* Dfun_scg_11at7214_nt.fa 
+* Dhis_scg_11at7214_nt.fa 
+* Dimm_scg_11at7214_nt.fa  
+* Drep_scg_11at7214_nt.fa
+* Dsim_scg_11at7214_nt.fa
+
+This files was manually creates based on the SCG in for Dmel `deviate_transposon_sequence_set_v10.2.fa` 
+* Dmel_scg_deviate_nt.fa 
