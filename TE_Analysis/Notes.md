@@ -65,38 +65,54 @@ Use optional parameters `--min 5 --only-dfam-hits`to filter for clusters with a 
 
 If this is used on an individual GD folder, the number of individuals is always 1!
 
-Sample output:
+# Columns
+
+| **Column Name**         | **Explanation**                                                                                                                                                                                                                                      |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Species**             | Species code or name (e.g., `Dhis`, `Dbus`). Represents the organism from which the sequences come.                                                                                                                                                  |
+| **Cluster**             | The filename of the FASTA file for a sequence cluster (e.g., `cluster_17090.fasta`). Each cluster likely groups homologous or related sequences.                                                                                                     |
+| **Sequences**           | Total number of sequences in the FASTA cluster file. Count of lines starting with `>` in the FASTA.                                                                                                                                                  |
+| **Unique\_Individuals** | Number of unique individuals (e.g., `Dhis01`, `Dbus04`) contributing sequences to the cluster. This is based on individual IDs extracted from sequence headers.                                                                                      |
+| **Ratio\_Seq\_Indiv**   | Ratio of sequences to individuals: `Sequences / Unique_Individuals`. A value >1 means some individuals contribute multiple sequences.                                                                                                                |
+| **DFAM\_Hit**           | Indicates whether the cluster matches a DFAM entry (likely a transposable element or repeat). `yes` or `no`.                                                                                                                                         |
+| **DFAM\_Tandem**        | Indicates if the DFAM hit is a **tandem repeat** (repeats occurring adjacent to each other). `yes` or `no`.                                                                                                                                          |
+| **Individuals**         | Comma-separated list of all unique individuals contributing to the cluster.                                                                                                                                                                          |
+| **Regions**             | Comma-separated list of genomic regions (coordinates) corresponding to sequences in the cluster. Format: `scaffold:start-end`. If multiple sequences from an individual map to overlapping regions, these may be merged to a single coordinate span. |
+
+# Sample output
 
 ```
-Species	Cluster	Sequences	Unique_Individuals	DFAM_Hit	DFAM_Tandem
-Dhis	cluster_17090.fasta	10	5	yes	no
-Dhis	cluster_17183.fasta	5	5	no	yes
-Dhis	cluster_21602.fasta	5	5	no	yes
-Dhis	cluster_6857.fasta	5	5	no	no
-Dhis	cluster_19652.fasta	30	5	no	no
-Dhis	cluster_23764.fasta	7	5	yes	no
-Dhis	cluster_30201.fasta	5	5	yes	yes
-Dhis	cluster_14980.fasta	5	5	yes	no
-Dhis	cluster_14995.fasta	5	5	yes	no
-Dhis	cluster_21778.fasta	5	5	no	yes
-Dhis	cluster_11349.fasta	8	5	no	no
-Dhis	cluster_5841.fasta	5	5	no	yes
-Dhis	cluster_27049.fasta	5	5	no	no
+Species	Cluster	Sequences	Unique_Individuals	Ratio_Seq_Indiv	DFAM_Hit	DFAM_Tandem	Individuals	Regions
+Dhis	cluster_17090.fasta	10	5	2.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:29821006-29822677,OY282582.1:45901083-45904485,OY282582.1:45914821-45916819,OY282582.1:54477633-54479975,OY282582.1:58195753-58198013
+Dhis	cluster_23764.fasta	7	5	1.4	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY729166.1:28943535-28947857,OY729166.1:29588341-29593850
+Dhis	cluster_30201.fasta	5	5	1.0	yes	yes	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY729167.1:7714116-7716601
+Dhis	cluster_14980.fasta	5	5	1.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:33590097-33592374
+Dhis	cluster_14995.fasta	5	5	1.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:33655782-33659214
+Dbus	cluster_461.fasta	9	9	1.0	yes	no	Dbus01,Dbus02,Dbus04,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09,Dbus10	NW_022872725.1:43417-47466
+Dbus	cluster_148.fasta	8	8	1.0	yes	no	Dbus01,Dbus02,Dbus04,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09	NC_046605.1:22842013-22844975
+Dbus	cluster_159.fasta	8	8	1.0	yes	no	Dbus01,Dbus02,Dbus04,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09	NC_046605.1:23540670-23544659
+Dbus	cluster_477.fasta	6	6	1.0	yes	no	Dbus01,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09	NW_022872750.1:15783-16941
+Dbus	cluster_137.fasta	5	5	1.0	yes	no	Dbus01,Dbus03,Dbus04,Dbus09,Dbus10	NC_046605.1:22134016-22135832
+Dbus	cluster_444.fasta	6	6	1.0	yes	no	Dbus02,Dbus04,Dbus07,Dbus08,Dbus09,Dbus10	NW_022872723.1:1988227-1991931
 ```
 
-Columns: 
-
-- Species: species ID
-- Cluster: cluster file
-- Sequences: # of sequences in the cluster
-- Unique_Individuals: # number of unique individuals in the cluster 
-- DFAM_Hit: cluster has a DFAM hit
-- DFAM_Tandem: cluster has a DFAM tandem repeat
+## Run Drosi NHM data
 
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Dhis GenomeDeltaResult/Dbus GenomeDeltaResult/Dimm GenomeDeltaResult/Dfun GenomeDeltaResult/Dsim GenomeDeltaResult/Drep --min_individuals 5 --only-dfam-hits
 ```
 
+## Run Bger mapped against my ref genome
+
+```bash
+python run_analyse_clusters.py GenomeDeltaResult/Brac --min_individuals 1 --only-dfam-hits
+```
+
+## Run Bger mapped against GCA...
+
+```bash
+python run_analyse_clusters.py GenomeDeltaResult/Bgca --min_individuals 1 --only-dfam-hits
+```
 # TE Candidate Processing with DeviaTE
 
 https://github.com/W-L/deviaTE 

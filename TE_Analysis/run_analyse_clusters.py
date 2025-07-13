@@ -4,6 +4,8 @@ import argparse
 import os
 import glob
 import json
+import re
+from collections import defaultdict
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
@@ -48,6 +50,9 @@ def find_cluster_dir(species_dir):
         break  # only check top-level
     return None
 
+import re
+from collections import defaultdict
+
 def analyze_fasta_all_regions(fasta_path):
     """
     Parses a FASTA file to:
@@ -58,14 +63,14 @@ def analyze_fasta_all_regions(fasta_path):
     - unique_individual_count: int
     - total_sequence_count: int
     - unique_ids: set of str
-    - merged_regions: dict {region_prefix: list of merged (start, end) tuples}
+    - merged_regions_str: str (e.g., 'NC_046604.1:1000-2000,NC_046604.1:2500-3000')
     """
     unique_ids = set()
     num_sequences = 0
     has_pipe = False
 
     # Matches any region like NC_XXXXXX.X:START-END
-    pattern = re.compile(r"(?P<ref>NC_\d+\.\d+):(?P<start>\d+)-(?P<end>\d+)")
+    pattern = re.compile(r"(?P<ref>[^\s:]+):(?P<start>\d+)-(?P<end>\d+)")
 
     regions_by_ref = defaultdict(list)
 
@@ -81,7 +86,9 @@ def analyze_fasta_all_regions(fasta_path):
                     id_part = header.split('|')[0]
                     unique_ids.add(id_part)
 
-                # Extract regions
+                    header = header.split('|')[1]  # Use the part after the pipe
+
+                # Extract region
                 match = pattern.search(header)
                 if match:
                     ref = match.group('ref')
@@ -92,39 +99,24 @@ def analyze_fasta_all_regions(fasta_path):
     unique_count = len(unique_ids) if has_pipe else 1
 
     # Merge overlapping regions per reference
-    merged_regions = {}
+    merged_region_list = []
     for ref, regions in regions_by_ref.items():
         merged = []
         regions.sort()
         current_start, current_end = regions[0]
         for start, end in regions[1:]:
-            if start <= current_end:
+            if start <= current_end:  # Overlapping or adjacent
                 current_end = max(current_end, end)
             else:
                 merged.append((current_start, current_end))
                 current_start, current_end = start, end
         merged.append((current_start, current_end))
-        merged_regions[ref] = merged
 
-    return unique_count, num_sequences, unique_ids, merged_regions
+        # Format each merged region as ref:start-end
+        for start, end in merged:
+            merged_region_list.append(f"{ref}:{start}-{end}")
 
-def count_individuals_and_sequences(fasta_path):
-    unique_ids = set()
-    num_sequences = 0
-    has_pipe = False
-
-    with open(fasta_path, 'r') as file:
-        for line in file:
-            if line.startswith('>'):
-                num_sequences += 1
-                header = line.strip().lstrip('>')
-                if '|' in header:
-                    has_pipe = True
-                    id_part = header.split('|')[0]
-                    unique_ids.add(id_part)
-
-    unique_count = len(unique_ids) if has_pipe else 1
-    return unique_count, num_sequences, unique_ids
+    return unique_count, num_sequences, unique_ids, merged_region_list
 
 def check_dfam_hit(species_name, cluster_name, dfam_base_dir):
     cluster_id = os.path.splitext(cluster_name)[0]  # remove .fasta
@@ -155,7 +147,7 @@ def check_dfam_hit(species_name, cluster_name, dfam_base_dir):
 
 def main():
     args = parse_arguments()
-    print("Species\tCluster\tSequences\tUnique_Individuals\tRatio_Seq_Indiv\tDFAM_Hit\tDFAM_Tandem\tIndividuals")
+    print("Species\tCluster\tSequences\tUnique_Individuals\tRatio_Seq_Indiv\tDFAM_Hit\tDFAM_Tandem\tIndividuals\tRegions")
 
     for species_dir in args.species_dirs:
         cluster_dir = find_cluster_dir(species_dir)
@@ -168,7 +160,7 @@ def main():
 
         for fasta_file in fasta_files:
             cluster_name = os.path.basename(fasta_file)
-            count_individuals, count_sequences, unique_ids = count_individuals_and_sequences(fasta_file)
+            count_individuals, count_sequences, unique_ids, regions = analyze_fasta_all_regions(fasta_file)
 
             if count_individuals < args.min_threshold:
                 continue
@@ -183,7 +175,7 @@ def main():
 
             dfam_hit, dfam_tandem = check_dfam_hit(species_name, cluster_name, args.dfam_dir)
             if not args.only_dfam_hits or dfam_hit == "yes" or dfam_hit == "error":
-                print(f"{species_name}\t{cluster_name}\t{count_sequences}\t{count_individuals}\t{ratio_seq_indiv}\t{dfam_hit}\t{dfam_tandem}\t{','.join(unique_ids)}")
+                print(f"{species_name}\t{cluster_name}\t{count_sequences}\t{count_individuals}\t{ratio_seq_indiv}\t{dfam_hit}\t{dfam_tandem}\t{','.join(unique_ids)}\t{','.join(regions)}")
 
 if __name__ == '__main__':
     main()
