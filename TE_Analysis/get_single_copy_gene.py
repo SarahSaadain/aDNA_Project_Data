@@ -66,6 +66,11 @@ def main():
         default="run_drosophilidae_odb12",
         help="Name of the BUSCO run folder inside the BUSCO directory (default: run_drosophilidae_odb12)"
     )
+    parser.add_argument(
+        "--prefix",
+        default="",
+        help="Prefix for the output FASTA file (default: empty, uses folder name)"
+    )
 
     args = parser.parse_args()
 
@@ -97,6 +102,10 @@ def main():
 
     # get folder name
     folder_name = os.path.basename(os.path.dirname(args.busco_dir))
+
+    # If prefix is provided, use it; otherwise, use the folder name
+    if args.prefix:
+        folder_name = args.prefix   
 
     # Step 5: Output
     out_file = f"{folder_name}_{busco_id}_nt.fa"
