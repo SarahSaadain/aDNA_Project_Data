@@ -1,13 +1,21 @@
+# GenomeDelta
+
+Below steps rely on having GenomeDelta outputs for the different individuals.
+
+Example how to run GD normally:
+* [Drosi GenomeDelta Notes](<../Drosi_NHM_2024/resources/run _genome_delta.md>)
+* [Dsim GenomeDelta Notes](<../Dsim/resources/run _genome_delta.md>)
+
 # Working Directory
 
-/mnt/data5/sarah/TE_Analysis
+All steps below are done from `/mnt/data5/sarah/TE_Analysis` if not stated otherwise.
 
 # Check candidates vs NCBI and DFAM Database/API
 
 Use: 
 * [run_ncbi_dfam_analysis.sh](run_ncbi_dfam_analysis.sh) to call
-* [check_fasta_against_ncbi.py](check_fasta_against_ncbi.py)
-* [check_fasta_against_dfam.py](check_fasta_against_dfam.py)
+   * [check_fasta_against_ncbi.py](check_fasta_against_ncbi.py)
+   * [check_fasta_against_dfam.py](check_fasta_against_dfam.py)
 
 
 ```bash
@@ -29,16 +37,20 @@ DFAM mostly takes more time.
 
 To check matches accross individuals, I want to compare all gaps with each other.
 
-Run [run_combine_gaps_fasta_per_species.py](run_combine_gaps_fasta_per_species.py) to collect all gaps fasta files and combine them by species. During combining the individual ID/name is added to the sequence header.
+## Step 1: Combine gaps from all individuals into a big fasta file
 
-Modified GD to start with analyzing the gaps fasta file: [genomedelta_main_gaps_analysis.sh](../GenomeDelta/genomedelta_main_gaps_analysis.sh)
+Run [run_combine_gaps_fasta_per_species.py](run_combine_gaps_fasta_per_species.py) to collect **all gaps** fasta files (`file-GD.fasta` from individuals) and combine them by species. During combining the individual ID/name is added to the sequence header.
 
-This creates in GenomeDeltaResults a <species> folder.
+## Step 2: Run the gaps with GD to get clusters
 
-Run it with combined reads to get clusters across all individuals:
+Modified GD to start with analyzing the gaps fasta file (no bam processing ... 
+Makes consensus sequences of all found clusters across all individuals of the same species. Directly start with blast, then MSA, building clusters, consensus of cluster, ...): [genomedelta_main_gaps_analysis.sh](../GenomeDelta/genomedelta_main_gaps_analysis.sh)
+
+This creates in GenomeDeltaResults a `<species>` (e.g. `Dsim`) folder (original runs create individuals as folders -> e.g. `Dsim01`).
+
+Run it with combined reads (created by [run_combine_gaps_fasta_per_species.py](run_combine_gaps_fasta_per_species.py)) and provide them via new parameter `--gap_fasta` to get clusters across all individuals. It will do the same as GD, but in this case we provide the gaps fasta file ourselves. Since we give our own gap sequences, we dont need bam and ref genome files (used before to determine gaps).
 
 ```bash
-
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun/Dfun_combined_gaps.fasta --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun --prefix Dfun  > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun/genomedelta.nohup.out 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm/Dimm_combined_gaps.fasta --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm --prefix Dimm  > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm/genomedelta.nohup.out 2>&1 &
@@ -53,9 +65,15 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta 
 
 ```
 
+## Step 3: Analyze with DFAM/NCBI Blast
+
 After GD is finished, we can run NCBI Blast and Dfam checks.
 
-# Analyze clusters
+## Step 4: Analyze with run_analyse_clusters.py
+
+After Dfam we can use run_analyse_clusters.py to get a list of all clusters, their hits, regions and more. See below.
+
+# Analyze clusters (run_analyse_clusters.py)
 
 Related to the combined analysis, i want to know if there are clusters with multiple individuals. Also i want to know which clusters have a DFAM hit and which clusters dont.
 
@@ -86,9 +104,8 @@ If this is used on an individual GD folder, the number of individuals is always 
 | **DFAM\_Hit**           | Indicates whether the cluster matches a DFAM entry (likely a transposable element or repeat). `yes` or `no`.                                                                                                                                         |
 | **DFAM\_Tandem**        | Indicates if the DFAM hit is a **tandem repeat** (repeats occurring adjacent to each other). `yes` or `no`.                                                                                                                                          |
 | **Individuals**         | Comma-separated list of all unique individuals contributing to the cluster.                                                                                                                                                                          |
-| **Regions**             | Comma-separated list of genomic regions (coordinates) corresponding to sequences in the cluster. Format: `scaffold:start-end`. If multiple sequences from an individual map to overlapping regions, these may be merged to a single coordinate span.
+| **Regions**             | Comma-separated list of genomic regions (coordinates) corresponding to sequences in the cluster. Format: `scaffold:start-end`. If multiple sequences from an individual map to overlapping regions, these may be merged to a single coordinate span. **Note:** This region is the base for the GenomeDelta cluster but it is not identical. The consensus sequence from this cluster can have a different length than the region, but it will definately lie in the mentioned region. This is due to how GenomeDelta handles the creation of the consensus sequence. If one sequence of the cluster is bigger than the others, during alignment this can lead to `-` characters in the MSA file. If there are more `-` characters than NT during comparison of one Base, the Base will be omitted. If that happens on the beginning and/or on the end, the consensus sequence will be shorter than the source sequences. Du to this, it is not possible to give the exact region for the TE hit from Dfam. |
 
-**Note:** This region is the base for the GenomeDelta cluster but it is not identical. The consensus sequence from this cluster can have a different length than the region, but it will definately lie in the mentioned region. This is due to how GenomeDelta handles the creation of the consensus sequence. If one sequence of the cluster is bigger than the others, during alignment this can lead to `-` characters in the MSA file. If there are more `-` characters than NT during comparison of one Base, the Base will be omitted. If that happens on the beginning and/or on the end, the consensus sequence will be shorter than the source sequences. Du to this, it is not possible to give the exact region for the TE hit from Dfam.
 | **TE\_Descriptions** | Quoted description(s) of transposable element(s) hit (e.g., `"FW2_DM is a non-LTR retrotransposon"`).                                                     |
 | **TE\_Coordinates**  | Coordinates in the consensus sequence of the TE hit, in `start-end` format. Adjusted for strand (reverse strand reports coordinates in descending order). |
 | **TE\_Strand**       | Strand of the TE hit: `"+"` or `"-"`.                                                                                                                     |
