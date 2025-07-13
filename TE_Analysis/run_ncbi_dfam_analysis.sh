@@ -5,7 +5,7 @@ mkdir -p NCBI_Analysis
 mkdir -p DFAM_Analysis
 
 # Loop over all matching FASTA files
-for fasta in GenomeDeltaResult/*/file-GD-candidates.fasta; do
+for fasta in GenomeDeltaResult/*/*-GD-candidates.fasta; do
     # Extract the folder name without GenomeDeltaResult/
 
     folder=$(dirname "$fasta") 
