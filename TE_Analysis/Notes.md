@@ -110,30 +110,24 @@ If this is used on an individual GD folder, the number of individuals is always 
 | **TE\_Strand**       | Strand of the TE hit: `"+"` or `"-"`.                                                                                                                     |
 | **TE\_Bit\_Score**   | Bit score of the DFAM match — reflects match quality.                                                                                                     |
 
-
-## Sample output for run_analyse_clusters.py
-
-(Needs updating)
-
-```
-Species	Cluster	Sequences	Unique_Individuals	Ratio_Seq_Indiv	DFAM_Hit	DFAM_Tandem	Individuals	Regions
-Dhis	cluster_17090.fasta	10	5	2.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:29821006-29822677,OY282582.1:45901083-45904485,OY282582.1:45914821-45916819,OY282582.1:54477633-54479975,OY282582.1:58195753-58198013
-Dhis	cluster_23764.fasta	7	5	1.4	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY729166.1:28943535-28947857,OY729166.1:29588341-29593850
-Dhis	cluster_30201.fasta	5	5	1.0	yes	yes	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY729167.1:7714116-7716601
-Dhis	cluster_14980.fasta	5	5	1.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:33590097-33592374
-Dhis	cluster_14995.fasta	5	5	1.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:33655782-33659214
-Dbus	cluster_461.fasta	9	9	1.0	yes	no	Dbus01,Dbus02,Dbus04,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09,Dbus10	NW_022872725.1:43417-47466
-Dbus	cluster_148.fasta	8	8	1.0	yes	no	Dbus01,Dbus02,Dbus04,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09	NC_046605.1:22842013-22844975
-Dbus	cluster_159.fasta	8	8	1.0	yes	no	Dbus01,Dbus02,Dbus04,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09	NC_046605.1:23540670-23544659
-Dbus	cluster_477.fasta	6	6	1.0	yes	no	Dbus01,Dbus05,Dbus06,Dbus07,Dbus08,Dbus09	NW_022872750.1:15783-16941
-Dbus	cluster_137.fasta	5	5	1.0	yes	no	Dbus01,Dbus03,Dbus04,Dbus09,Dbus10	NC_046605.1:22134016-22135832
-Dbus	cluster_444.fasta	6	6	1.0	yes	no	Dbus02,Dbus04,Dbus07,Dbus08,Dbus09,Dbus10	NW_022872723.1:1988227-1991931
-```
-
 ## Run Drosi NHM data with run_analyse_clusters.py
 
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Dhis GenomeDeltaResult/Dbus GenomeDeltaResult/Dimm GenomeDeltaResult/Dfun GenomeDeltaResult/Dsim GenomeDeltaResult/Drep --min_individuals 5 --only-dfam-hits
+```
+
+### Example output for run_analyse_clusters.py
+
+(Needs updating)
+
+```
+Species	Cluster	Sequences	Unique_Individuals	Ratio_Seq_Indiv	DFAM_Hit	DFAM_Tandem	Individuals	Regions	TE_Descriptions	TE_Coordinates	TE_Strand	TE_Bit_Score
+Dhis	cluster_17090.fasta	10	5	2.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:29821006-29822677,OY282582.1:45901083-45904485,OY282582.1:45914821-45916819,OY282582.1:54477633-54479975,OY282582.1:58195753-58198013	"M4DM is a nonautonomous DNA transposon."	564-675	+	13.4
+Dhis	cluster_17090.fasta	10	5	2.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:29821006-29822677,OY282582.1:45901083-45904485,OY282582.1:45914821-45916819,OY282582.1:54477633-54479975,OY282582.1:58195753-58198013	"M4DM is a nonautonomous DNA transposon."	1312-1818	+	146.4
+Dhis	cluster_23764.fasta	7	5	1.4	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY729166.1:28943535-28947857,OY729166.1:29588341-29593850	"DNAREP1_DM is a putative nonautonomous DNA transposable sequence."	1668-1769	-	57.6
+Dhis	cluster_23764.fasta	7	5	1.4	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY729166.1:28943535-28947857,OY729166.1:29588341-29593850	"BS retrotransposon."	1833-2111	-	37.8
+Dhis	cluster_30201.fasta	5	5	1.0	yes	yes	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY729167.1:7714116-7716601	"DNAREP1_DM is a putative nonautonomous DNA transposable sequence."	1241-1363	-	43.2
+Dhis	cluster_14980.fasta	5	5	1.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:33590097-33592374	"DNAREP1_DM is a putative nonautonomous DNA transposable sequence."	536-913	-	117.9
 ```
 
 ## Run Bger mapped against my ref genome with run_analyse_clusters.py
