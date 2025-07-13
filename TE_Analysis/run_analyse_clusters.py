@@ -118,6 +118,10 @@ def analyze_fasta_all_regions(fasta_path):
 
     return unique_count, num_sequences, unique_ids, merged_region_list
 
+import os
+import glob
+import json
+
 def check_dfam_hit(species_name, cluster_name, dfam_base_dir):
     cluster_id = os.path.splitext(cluster_name)[0]  # remove .fasta
     dfam_species_dir = os.path.join(dfam_base_dir, species_name)
@@ -125,7 +129,7 @@ def check_dfam_hit(species_name, cluster_name, dfam_base_dir):
     matches = glob.glob(pattern)
 
     if not matches:
-        return "error", "error"
+        return "error", "error", []
 
     for json_file in matches:
         try:
@@ -133,21 +137,47 @@ def check_dfam_hit(species_name, cluster_name, dfam_base_dir):
                 data = json.load(f)
 
                 if isinstance(data, dict) and 'results' in data:
-                    for result in data['results']:
-                        has_hits = bool(result.get('hits'))
-                        has_tandem = bool(result.get('tandem_repeats'))
-                        return ("yes" if has_hits else "no", 
-                                "yes" if has_tandem else "no")
-                else:
-                    return "error", "error"
-        except Exception:
-            return "error", "error"
+                    any_hits = False
+                    any_tandem = False
+                    hit_info_list = []
 
-    return "error", "error"
+                    for result in data['results']:
+                        hits = result.get('hits', [])
+
+                        if hits:
+                            any_hits = True
+                            for hit in hits:
+                                description = f"\"{hit.get('description', '')}\""
+                                # Collect coordinates as a tuple (start, end)
+                                
+
+                                hit_info_list.append({
+                                    "description": description,
+                                    "bit_score": hit.get('bit_score', 0),
+                                    "start": hit.get("ali_start"),
+                                    "end": hit.get("ali_end"),
+                                    "strand": hit.get("strand", "?")
+                                })
+
+                        if result.get('tandem_repeats'):
+                            any_tandem = True
+
+                    return (
+                        "yes" if any_hits else "no",
+                        "yes" if any_tandem else "no",
+                        hit_info_list
+                    )
+                else:
+                    return "error", "error", []
+        except Exception:
+            return "error", "error", []
+
+    return "error", "error", []
+
 
 def main():
     args = parse_arguments()
-    print("Species\tCluster\tSequences\tUnique_Individuals\tRatio_Seq_Indiv\tDFAM_Hit\tDFAM_Tandem\tIndividuals\tRegions")
+    print("Species\tCluster\tSequences\tUnique_Individuals\tRatio_Seq_Indiv\tDFAM_Hit\tDFAM_Tandem\tIndividuals\tRegions\tTE_Descriptions\tTE_Coordinates\tTE_Strand\tTE_Bit_Score")
 
     for species_dir in args.species_dirs:
         cluster_dir = find_cluster_dir(species_dir)
@@ -173,9 +203,24 @@ def main():
             # sort unique IDs for consistent output
             unique_ids = sorted(unique_ids)
 
-            dfam_hit, dfam_tandem = check_dfam_hit(species_name, cluster_name, args.dfam_dir)
+            dfam_hit, dfam_tandem, hit_info_list = check_dfam_hit(species_name, cluster_name, args.dfam_dir)
             if not args.only_dfam_hits or dfam_hit == "yes" or dfam_hit == "error":
-                print(f"{species_name}\t{cluster_name}\t{count_sequences}\t{count_individuals}\t{ratio_seq_indiv}\t{dfam_hit}\t{dfam_tandem}\t{','.join(unique_ids)}\t{','.join(regions)}")
+
+                if len(hit_info_list) == 0:
+                    print(f"{species_name}\t{cluster_name}\t{count_sequences}\t{count_individuals}\t{ratio_seq_indiv}\t{dfam_hit}\t{dfam_tandem}\t{','.join(unique_ids)}\t{','.join(regions)}\tNo DFAM hits")
+                else:
+                    for hit_info in hit_info_list:
+                        description = hit_info['description']
+                        bit_score = hit_info['bit_score']
+                        start = hit_info['start']
+                        end = hit_info['end']
+                        strand = hit_info['strand']
+
+                        if strand == "-":
+                            start = hit_info['end']
+                            end = hit_info['start']
+
+                        print(f"{species_name}\t{cluster_name}\t{count_sequences}\t{count_individuals}\t{ratio_seq_indiv}\t{dfam_hit}\t{dfam_tandem}\t{','.join(unique_ids)}\t{','.join(regions)}\t{description}\t{start}-{end}\t{strand}\t{bit_score}")
 
 if __name__ == '__main__':
     main()
