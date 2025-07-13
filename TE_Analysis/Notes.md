@@ -51,8 +51,6 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta 
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep/Drep_combined_gaps.fasta --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep --prefix Drep  > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep/genomedelta.nohup.out 2>&1 &
 
-nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dmel/Dmel_combined_gaps.fasta --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dmel --prefix Dmel  > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dmel/genomedelta.nohup.out 2>&1 &
-
 ```
 
 After GD is finished, we can run NCBI Blast and Dfam checks.
@@ -70,7 +68,7 @@ If this is used on an individual GD folder, the number of individuals is always 
 Sample output:
 
 ```
-Species	Cluster	          Sequences	Unique_Individuals	DFAM_Hit	DFAM_Tandem
+Species	Cluster	Sequences	Unique_Individuals	DFAM_Hit	DFAM_Tandem
 Dhis	cluster_17090.fasta	10	5	yes	no
 Dhis	cluster_17183.fasta	5	5	no	yes
 Dhis	cluster_21602.fasta	5	5	no	yes
