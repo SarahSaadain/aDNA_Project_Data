@@ -61,11 +61,20 @@ Related to the combined analysis, i want to know if there are clusters with mult
 
 Run [run_analyse_clusters.py](run_analyse_clusters.py) to get a list of all clusters for one or many Result folders. It also compares it to DFAM hits and checks if the relevant cluster has a hit. If the DFAM hit is not found, it will say `error`. So its good to make sure the DFAM has finished before analysing the data.
 
-Use optional parameters `--min 5 --only-dfam-hits`to filter for clusters with a minimum number of individuals and only show clusters with dfam hits.
+## run_analyse_clusters.py parameters
+
+| **Parameter**       | **Type**   | **Description**                                                                        | **Default**           |
+| ------------------- | ---------- | -------------------------------------------------------------------------------------- | --------------------- |
+| `species_dirs`      | Positional | One or more input directories for species (e.g., `GenomeDelta/Dbus01`).                | Required              |
+| `--min_individuals` | `int`      | Minimum number of unique individuals required per cluster to include it in the output. | `0`                   |
+| `--min_ratio`       | `float`    | Minimum **sequence-to-individual** ratio required per cluster to include it.           | `0.00`                |
+| `--dfam_dir`        | `str`      | Directory path to DFAM analysis results for checking repeat annotations.               | `'DFAM_Analysis'`     |
+| `--only-dfam-hits`  | `flag`     | If set, **only** include clusters that have a DFAM match. Acts as a filter.            | `False` (not applied) |
+
 
 If this is used on an individual GD folder, the number of individuals is always 1!
 
-# Columns
+## Columns for run_analyse_clusters.py
 
 | **Column Name**         | **Explanation**                                                                                                                                                                                                                                      |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -79,7 +88,7 @@ If this is used on an individual GD folder, the number of individuals is always 
 | **Individuals**         | Comma-separated list of all unique individuals contributing to the cluster.                                                                                                                                                                          |
 | **Regions**             | Comma-separated list of genomic regions (coordinates) corresponding to sequences in the cluster. Format: `scaffold:start-end`. If multiple sequences from an individual map to overlapping regions, these may be merged to a single coordinate span. |
 
-# Sample output
+# Sample output for run_analyse_clusters.py
 
 ```
 Species	Cluster	Sequences	Unique_Individuals	Ratio_Seq_Indiv	DFAM_Hit	DFAM_Tandem	Individuals	Regions
@@ -96,19 +105,19 @@ Dbus	cluster_137.fasta	5	5	1.0	yes	no	Dbus01,Dbus03,Dbus04,Dbus09,Dbus10	NC_0466
 Dbus	cluster_444.fasta	6	6	1.0	yes	no	Dbus02,Dbus04,Dbus07,Dbus08,Dbus09,Dbus10	NW_022872723.1:1988227-1991931
 ```
 
-## Run Drosi NHM data
+## Run Drosi NHM data with run_analyse_clusters.py
 
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Dhis GenomeDeltaResult/Dbus GenomeDeltaResult/Dimm GenomeDeltaResult/Dfun GenomeDeltaResult/Dsim GenomeDeltaResult/Drep --min_individuals 5 --only-dfam-hits
 ```
 
-## Run Bger mapped against my ref genome
+## Run Bger mapped against my ref genome with run_analyse_clusters.py
 
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Brac --min_individuals 1 --only-dfam-hits
 ```
 
-## Run Bger mapped against GCA...
+## Run Bger mapped against GCA... with run_analyse_clusters.py
 
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Bgca --min_individuals 1 --only-dfam-hits
