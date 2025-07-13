@@ -88,7 +88,7 @@ If this is used on an individual GD folder, the number of individuals is always 
 | **Individuals**         | Comma-separated list of all unique individuals contributing to the cluster.                                                                                                                                                                          |
 | **Regions**             | Comma-separated list of genomic regions (coordinates) corresponding to sequences in the cluster. Format: `scaffold:start-end`. If multiple sequences from an individual map to overlapping regions, these may be merged to a single coordinate span. |
 
-# Sample output for run_analyse_clusters.py
+## Sample output for run_analyse_clusters.py
 
 ```
 Species	Cluster	Sequences	Unique_Individuals	Ratio_Seq_Indiv	DFAM_Hit	DFAM_Tandem	Individuals	Regions
