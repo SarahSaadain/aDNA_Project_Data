@@ -48,6 +48,66 @@ def find_cluster_dir(species_dir):
         break  # only check top-level
     return None
 
+def analyze_fasta_all_regions(fasta_path):
+    """
+    Parses a FASTA file to:
+    - Count unique individuals and total sequences
+    - Extract and merge coordinate regions for all reference regions
+
+    Returns:
+    - unique_individual_count: int
+    - total_sequence_count: int
+    - unique_ids: set of str
+    - merged_regions: dict {region_prefix: list of merged (start, end) tuples}
+    """
+    unique_ids = set()
+    num_sequences = 0
+    has_pipe = False
+
+    # Matches any region like NC_XXXXXX.X:START-END
+    pattern = re.compile(r"(?P<ref>NC_\d+\.\d+):(?P<start>\d+)-(?P<end>\d+)")
+
+    regions_by_ref = defaultdict(list)
+
+    with open(fasta_path, 'r') as file:
+        for line in file:
+            if line.startswith('>'):
+                num_sequences += 1
+                header = line.strip().lstrip('>')
+
+                # Track unique individuals
+                if '|' in header:
+                    has_pipe = True
+                    id_part = header.split('|')[0]
+                    unique_ids.add(id_part)
+
+                # Extract regions
+                match = pattern.search(header)
+                if match:
+                    ref = match.group('ref')
+                    start = int(match.group('start'))
+                    end = int(match.group('end'))
+                    regions_by_ref[ref].append((start, end))
+
+    unique_count = len(unique_ids) if has_pipe else 1
+
+    # Merge overlapping regions per reference
+    merged_regions = {}
+    for ref, regions in regions_by_ref.items():
+        merged = []
+        regions.sort()
+        current_start, current_end = regions[0]
+        for start, end in regions[1:]:
+            if start <= current_end:
+                current_end = max(current_end, end)
+            else:
+                merged.append((current_start, current_end))
+                current_start, current_end = start, end
+        merged.append((current_start, current_end))
+        merged_regions[ref] = merged
+
+    return unique_count, num_sequences, unique_ids, merged_regions
+
 def count_individuals_and_sequences(fasta_path):
     unique_ids = set()
     num_sequences = 0
