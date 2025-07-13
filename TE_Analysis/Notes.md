@@ -97,6 +97,8 @@ If this is used on an individual GD folder, the number of individuals is always 
 
 ## Sample output for run_analyse_clusters.py
 
+(Needs updating)
+
 ```
 Species	Cluster	Sequences	Unique_Individuals	Ratio_Seq_Indiv	DFAM_Hit	DFAM_Tandem	Individuals	Regions
 Dhis	cluster_17090.fasta	10	5	2.0	yes	no	Dhis01,Dhis02,Dhis03,Dhis04,Dhis05	OY282582.1:29821006-29822677,OY282582.1:45901083-45904485,OY282582.1:45914821-45916819,OY282582.1:54477633-54479975,OY282582.1:58195753-58198013
