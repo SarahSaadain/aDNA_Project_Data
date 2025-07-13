@@ -51,6 +51,8 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta 
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep/Drep_combined_gaps.fasta --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep --prefix Drep  > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep/genomedelta.nohup.out 2>&1 &
 
+nohup bash /mnt/data5/sarah/GenomeDelta/linux/main_gaps_analysis.sh --gap_fasta /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dmel/Dmel_combined_gaps.fasta --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dmel --prefix Dmel  > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dmel/genomedelta.nohup.out 2>&1 &
+
 ```
 
 After GD is finished, we can run NCBI Blast and Dfam checks.
