@@ -81,7 +81,6 @@ def process_species(species, file_list, output_base_dir, single_copy_gene_file=N
     scg_names = []
     if single_copy_gene_file:
         with open(single_copy_gene_file, "r") as scg_file:
-
             i = 0
             for line in scg_file:
                 if line.startswith(">"):
@@ -199,11 +198,9 @@ def main():
         species_groups[species_prefix].append((folder_name, filepath))
 
     for species, file_list in species_groups.items():
-        scg_pattern = os.path.join(scg_dir, f"{species}_scg_*_nt.fa")
-        matching_scg_files = glob.glob(scg_pattern)
+        single_copy_gene_file = os.path.join(scg_dir, f"{species}_scg.fasta")
 
-        if matching_scg_files:
-            single_copy_gene_file = matching_scg_files[0]
+        if os.path.isfile(single_copy_gene_file):
             print(f"🔍 Using SCG file for species {species}: {single_copy_gene_file}")
         else:
             single_copy_gene_file = None
