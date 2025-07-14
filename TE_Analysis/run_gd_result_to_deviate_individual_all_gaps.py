@@ -198,11 +198,9 @@ def main():
 
     for individual, file_list in species_groups.items():
         species = individual[:4]  # Use first 4 characters as species name
-        scg_pattern = os.path.join(scg_dir, f"{species}_scg_*_nt.fa")
-        matching_scg_files = glob.glob(scg_pattern)
+        single_copy_gene_file = os.path.join(scg_dir, f"{species}_scg.fasta")
 
-        if matching_scg_files:
-            single_copy_gene_file = matching_scg_files[0]
+        if os.path.isfile(single_copy_gene_file):
             print(f"🔍 Using SCG file for individual {individual}: {single_copy_gene_file}")
         else:
             single_copy_gene_file = None
