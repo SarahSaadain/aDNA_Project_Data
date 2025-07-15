@@ -150,7 +150,7 @@ https://github.com/W-L/deviaTE
 Run [run_gd_result_to_deviate_candidates.py](run_gd_result_to_deviate_candidates.py) to map sequences against known TEs. The candidates are combined by species
 
 ```bash
-nohup python -u run_gd_result_to_deviate_candidates.py --scg_dir . --library_base deviate_transposon_sequence_set_v10.2.fa > deviate_candidates.log 2>&1 &
+nohup python -u run_gd_result_to_deviate_candidates.py --scg_dir . --library_base TE_library_combined.fasta > deviate_candidates.log 2>&1 &
 ```
 
 ### Processing Workflow of run_gd_result_to_deviate_candidates.py (Per Species)
@@ -191,7 +191,7 @@ For each species (e.g. `DSIM`, `DFUN`, ...), the script performs:
 Run [run_gd_result_to_deviate_individual_all_gaps.py](run_gd_result_to_deviate_individual_all_gaps.py) to map all gaps of individuals against known TEs. The candidates are combined by species
 
 ```bash
-nohup python -u run_gd_result_to_deviate_individual_all_gaps.py > deviate_individual_all_gaps.log --scg_dir . --library_base deviate_transposon_sequence_set_v10.2.fa 2>&1 &
+nohup python -u run_gd_result_to_deviate_individual_all_gaps.py > deviate_individual_all_gaps.log --scg_dir . --library_base TE_library_combined.fasta 2>&1 &
 ```
 
 ### Processing Workflow of run_gd_result_to_deviate_individual_all_gaps.py (Per Species)
