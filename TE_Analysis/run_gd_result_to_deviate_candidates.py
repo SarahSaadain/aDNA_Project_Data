@@ -94,6 +94,10 @@ def process_species(species, file_list, output_base_dir, single_copy_gene_file=N
                 with open(library_file, "r") as lib_file:
                     for line in lib_file:
                         line = line.rstrip()  # Remove trailing whitespace including \n
+                        
+                        if not line:
+                            continue  # skip empty lines
+                        
                         outfile.write(line.upper() + "\n")
 
                 # Write the second file (SCG file)
@@ -101,6 +105,10 @@ def process_species(species, file_list, output_base_dir, single_copy_gene_file=N
                     i = 0
                     for line in scg_file:
                         line = line.rstrip()  # Remove trailing whitespace including \n
+
+                        if not line:
+                            continue  # skip empty lines
+
                         if line.startswith(">"):
                             i += 1
                             outfile.write(f">{species}_SCG_{i}\n")
