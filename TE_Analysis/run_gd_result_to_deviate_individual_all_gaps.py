@@ -91,17 +91,22 @@ def process_species(individual, file_list, output_base_dir, single_copy_gene_fil
         if not os.path.exists(library_file_species):
             print (f"  🧬 Creating TE library for {individual} at {library_file_species}...")
             with open(library_file_species, "w") as outfile:
+                # Write the first file (TE library)
                 with open(library_file, "r") as lib_file:
                     for line in lib_file:
-                        outfile.write(line.upper())
+                        line = line.rstrip()  # Remove trailing whitespace including \n
+                        outfile.write(line.upper() + "\n")
+
+                # Write the second file (SCG file)
                 with open(single_copy_gene_file, "r") as scg_file:
                     i = 0
                     for line in scg_file:
+                        line = line.rstrip()  # Remove trailing whitespace including \n
                         if line.startswith(">"):
                             i += 1
                             outfile.write(f">{individual}_SCG_{i}\n")
                         else:
-                            outfile.write(line.upper())
+                            outfile.write(line.upper() + "\n")
 
     else:
         scg_names = ["Dmel_rpl32", "Dmel_piwi"]
