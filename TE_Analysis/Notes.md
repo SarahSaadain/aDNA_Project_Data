@@ -150,7 +150,7 @@ https://github.com/W-L/deviaTE
 Run [run_gd_result_to_deviate_candidates.py](run_gd_result_to_deviate_candidates.py) to map sequences against known TEs. The candidates are combined by species
 
 ```bash
-nohup python -u run_gd_result_to_deviate_candidates.py --scg_dir . --library_base deviate_transposon_sequence_set_v10.2.fa > deviate_candidates.log 2>&1 &
+nohup python -u run_gd_result_to_deviate_candidates.py --scg_dir . --library_base TE_library_combined.fasta > deviate_candidates.log 2>&1 &
 ```
 
 ### Processing Workflow of run_gd_result_to_deviate_candidates.py (Per Species)
@@ -191,7 +191,7 @@ For each species (e.g. `DSIM`, `DFUN`, ...), the script performs:
 Run [run_gd_result_to_deviate_individual_all_gaps.py](run_gd_result_to_deviate_individual_all_gaps.py) to map all gaps of individuals against known TEs. The candidates are combined by species
 
 ```bash
-nohup python -u run_gd_result_to_deviate_individual_all_gaps.py > deviate_individual_all_gaps.log --scg_dir . --library_base deviate_transposon_sequence_set_v10.2.fa 2>&1 &
+nohup python -u run_gd_result_to_deviate_individual_all_gaps.py > deviate_individual_all_gaps.log --scg_dir . --library_base TE_library_combined.fasta 2>&1 &
 ```
 
 ### Processing Workflow of run_gd_result_to_deviate_individual_all_gaps.py (Per Species)
@@ -243,18 +243,20 @@ Here's a breakdown of the most relevant files/directories:
 
 Run [get_single_copy_gene.py](get_single_copy_gene.py) to extract first single copy gene.
 
+By adding `--num_genes n`it is possible to define up to n single copy genes that should be used. They are extracted into a file calles `<prefix>_scg.fasta`
+
 ```bash
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dbus/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna --prefix Dbus_scg
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dbus/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna --prefix Dbus
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dfun/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna --prefix Dfun_scg
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dfun/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna --prefix Dfun
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Drep/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna --prefix Drep_scg
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Drep/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna --prefix Drep
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dhis/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna --prefix Dhis_scg
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dhis/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna --prefix Dhis
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dimm/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna --prefix Dimm_scg
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dimm/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna --prefix Dimm
 
-python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dsim/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dsim/raw/ref_genome/GCF_016746395.2_Prin_Dsim_3.1_genomic.fna --prefix Dsim_scg
+python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dsim/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dsim/raw/ref_genome/GCF_016746395.2_Prin_Dsim_3.1_genomic.fna --prefix Dsim
 ```
 
 Above commands create these files (`<species>_scg_<busco_id>_nt.fa`):

@@ -91,17 +91,30 @@ def process_species(individual, file_list, output_base_dir, single_copy_gene_fil
         if not os.path.exists(library_file_species):
             print (f"  🧬 Creating TE library for {individual} at {library_file_species}...")
             with open(library_file_species, "w") as outfile:
+                # Write the first file (TE library)
                 with open(library_file, "r") as lib_file:
                     for line in lib_file:
-                        outfile.write(line.upper())
+                        line = line.rstrip()  # Remove trailing whitespace including \n
+                        
+                        if not line:
+                            continue  # skip empty lines
+
+                        outfile.write(line.upper() + "\n")
+
+                # Write the second file (SCG file)
                 with open(single_copy_gene_file, "r") as scg_file:
                     i = 0
                     for line in scg_file:
+                        line = line.rstrip()  # Remove trailing whitespace including \n
+
+                        if not line:
+                            continue  # skip empty lines
+
                         if line.startswith(">"):
                             i += 1
                             outfile.write(f">{individual}_SCG_{i}\n")
                         else:
-                            outfile.write(line.upper())
+                            outfile.write(line.upper() + "\n")
 
     else:
         scg_names = ["Dmel_rpl32", "Dmel_piwi"]
@@ -198,11 +211,9 @@ def main():
 
     for individual, file_list in species_groups.items():
         species = individual[:4]  # Use first 4 characters as species name
-        scg_pattern = os.path.join(scg_dir, f"{species}_scg_*_nt.fa")
-        matching_scg_files = glob.glob(scg_pattern)
+        single_copy_gene_file = os.path.join(scg_dir, f"{species}_scg.fasta")
 
-        if matching_scg_files:
-            single_copy_gene_file = matching_scg_files[0]
+        if os.path.isfile(single_copy_gene_file):
             print(f"🔍 Using SCG file for individual {individual}: {single_copy_gene_file}")
         else:
             single_copy_gene_file = None
