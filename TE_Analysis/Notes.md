@@ -270,3 +270,27 @@ Above commands create these files (`<species>_scg_<busco_id>_nt.fa`):
 
 This files was manually creates based on the SCG in for Dmel `deviate_transposon_sequence_set_v10.2.fa` 
 * Dmel_scg_deviate_nt.fa 
+
+
+# Analyze deviate output
+
+This script [run_deviate_check_results.py](run_deviate_check_results.py) scans all `.deviate` files under the `DeviaTE_Analysis_candidates/` directory to identify files containing non-zero values in any of the nucleotide coverage columns (`A`, `C`, `G`, `T`, `cov`, `hq_cov`).
+
+## Usage
+
+```bash
+python run_deviate_check_results.py
+````
+
+## What It Does
+
+* Recursively searches through all subdirectories under `DeviaTE_Analysis_candidates/`
+* Parses `.deviate` files
+* Flags files that contain at least one line with non-zero coverage
+* Prints the paths of these candidate files to the console
+
+
+## Notes
+
+Make sure the `DeviaTE_Analysis_candidates/` directory is in the same path as specified inside the script, or update the `base_dir` variable accordingly.
+
