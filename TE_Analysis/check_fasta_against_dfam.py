@@ -12,7 +12,7 @@ SUBMIT_URL = f"{DFAM_BASE_URL}/searches"
 # Template for checking search status and retrieving results
 STATUS_URL_TEMPLATE = f"{DFAM_BASE_URL}/searches/{{search_id}}"
 
-def submit_sequence(sequence, seq_id):
+def submit_sequence(species, sequence, seq_id):
     """
     Submits a single sequence to the Dfam API for searching with fixed organism, cutoff, and evalue.
 
@@ -23,10 +23,20 @@ def submit_sequence(sequence, seq_id):
     Returns:
         str: The search_id if submission is successful, None otherwise.
     """
-    # Fixed values for organism, cutoff, and evalue as requested
+    # Fixed values for organism, cutoff, and evalue as requeste
     fixed_organism = "Drosophila melanogaster"
     fixed_cutoff = "curated"
     fixed_evalue = "0.001" # Note: This will be sent even if cutoff is 'curated' as per the request
+
+    # if starts with Bger
+    if species.startswith("Bger") or species.startswith("Bgca") or species.startswith("Brac"):
+        fixed_organism = "Halyomorpha halys"
+    # if starts with Dsim
+    elif species.startswith("D"):
+        fixed_organism = "Drosophila melanogaster"
+    # if starts with Phortica
+    else:
+        fixed_organism = "Other"
 
     payload = {
         "sequence": str(sequence),
@@ -181,6 +191,9 @@ def search_dfam(fasta_file, output_folder, delay=5):
         delay (int): Delay in seconds between processing each sequence.
     """
     os.makedirs(output_folder, exist_ok=True)
+    
+    #use first 4 char of output folder to determine species/individual
+    species = os.path.basename(output_folder)[:4]
 
     print(f"🔍 Reading sequences from {fasta_file}...")
 
@@ -220,7 +233,7 @@ def search_dfam(fasta_file, output_folder, delay=5):
             continue
 
         # Call submit_sequence without organism, cutoff, evalue_string arguments
-        search_id = submit_sequence(record.seq, record.id)
+        search_id = submit_sequence(species, record.seq, record.id)
         if not search_id:
             continue
 
