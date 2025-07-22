@@ -13,7 +13,7 @@ This implementation is tailored for **aDNA**, taking into account damage, low co
 
 We use **ANGSD** (Analysis of Next Generation Sequencing Data) to create consensus sequences and call SNPs in one streamlined process.
 
-### Script: `execute_angsd_create_consensus_sequence`
+### Script: `create_consensus_sequence_and_mafs.py`
 
 For each sorted BAM file:
 
