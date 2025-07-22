@@ -3,83 +3,199 @@
 # Global settings
 project_name: "aDNA_Project"
 project_description: "Analysis of ancient DNA data"
-threads_default: 50  # Default number of threads to use for parallel processing
 path_adna_project: "/mnt/data5/sarah/aDNA" #Main project path
-log_level: "INFO"
 
-processing:
-  fastqc:
-    threads: 40
-  adapter_removal:
-    adapters:
-      r1: "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA"
-      r2: "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT" 
+pipeline:
+  threads: 50  # Number of threads to use for the pipeline
+  log_level: "INFO"
+
+  raw_reads_processing:
+    execute: false
+    quality_checking_raw:
+      execute: true
+    adapter_removal:
+      execute: true
+      settings: 
+        adapters_sequences:
+          r1: "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA"
+          r2: "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT" 
+    quality_checking_adapter_removed:
+      execute: true
+    quality_filtering:
+      execute: true
+    quality_checking_quality_filtered:
+      execute: true
+    deduplication:
+      execute: true
+    quality_checking_deduplication:
+      execute: true
+    generate_quality_check_report:
+      execute: true
+    merge_reads_by_individual:
+      execute: true
+    reads_processing_analysis:
+      execute: true
+    read_length_distribution_analysis: 
+      execute: true
+    contamination_analysis:
+      execute: true
+      tools:
+        centrifuge:
+          execute: true
+          settings:
+            database: "/mnt/data5/sarah/aDNA/centrifuge_db"
+        kraken: 
+          execute: true
+          settings:
+            database: "/mnt/data5/sarah/aDNA/kraken_db"
+        ecmsdb:
+          execute: true
+    generate_raw_reads_plots: 
+      execute: true
+
+  reference_genome_processing:
+    execute: true
+    prepare_reference_genome:
+      execute: false
+    map_reads_to_reference_genome:
+      execute: false
+    damage_analysis:
+      execute: false
+    create_consensus_sequence:
+      execute: true
+    endogenous_reads_analysis: 
+      execute: false
+    coverage_analysis: 
+      execute: false
+    generate_reference_genome_plots: 
+      execute: false
+
+  post_processing:
+    execute: false
+    mtdna_analysis:
+      execute: true
+    comparison_plots:
+      execute: true
 
 # Species-specific settings
 species:
   Bger:
     name: "Blattella germanica"
     folder_name: "Bger"
-  Dsim:
-    name: "Drosophila simulans"
-    folder_name: "Dsim"
-  Dmel:
-    name: "Drosophila melanogaster"
-    folder_name: "Dmel"
-  Dmel_NCBI:
-    name: "Drosophila melanogaster (NCBI)"
-    folder_name: "Dmel_NCBI"
-  Dbus:
-    name: "Drosophila busckii"
-    folder_name: "Dbus"
-  Dfun:
-    name: "Drosophila funebris"
-    folder_name: "Dfun"
-  Dhis:
-    name: "Drosophila histrio"
-    folder_name: "Dhis"
-  Dimm:
-    name: "Drosophila immigrans"
-    folder_name: "Dimm"
-  Drep:
-    name: "Drosophila repleta"
-    folder_name: "Drep"
-  trial_Bger:
-    name: "Trial Blattella germanica"
-    folder_name: "trial_Bger"
-  trial_Dsim:
-    name: "Trial Drosophila simulans"
-    folder_name: "trial_Dsim"
-  trial_Phortica:
-    name: "Trial Phortica"
-    folder_name: "trial_Phortica"
-  trial_Sepsis:
-    name: "Trial Sepsis"
-    folder_name: "trial_Sepsis"
-  trial_Mmus:
-    name: "Trial Mus musculus"
-    folder_name: "trial_Mmus"
-  trial_Dmel:
-    name: "Trial Drosophila melanogaster"
-    folder_name: "trial_Dmel"
-  trial_spike_Dsim:
-    name: "Trial Spike Drosophila simulans"
-    folder_name: "trial_spike_Dsim"
-  trial_Dbus:
-    name: "Trial Drosophila busckii"
-    folder_name: "trial_Dbus"
-  trial_Dfun:
-    name: "Trial Drosophila funebris"
-    folder_name: "trial_Dfun"
-  trial_Dhis:
-    name: "Trial Drosophila histrio"
-    folder_name: "trial_Dhis"
-  trial_Dimm:
-    name: "Trial Drosophila immigrans"
-    folder_name: "trial_Dimm"
-  trial_Drep:
-    name: "Trial Drosophila repleta"
-    folder_name: "trial_Drep"
+    pipeline:
+      reference_genome_processing:
+        damage_analysis:
+          execute: true
+        create_consensus_sequence:
+          execute: true
+  # Dsim:
+  #   name: "Drosophila simulans"
+  #   folder_name: "Dsim"
+  #   pipeline:
+  #     reference_genome_processing:
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # Dmel:
+  #   name: "Drosophila melanogaster"
+  #   folder_name: "Dmel"
+  #   pipeline:
+  #     reference_genome_processing:
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # Dmel_NCBI:
+  #   name: "Drosophila melanogaster (NCBI)"
+  #   folder_name: "Dmel_NCBI"
+  #   pipeline:
+  #     reference_genome_processing:
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # Dbus:
+  #   name: "Drosophila busckii"
+  #   folder_name: "Dbus"
+  #   pipeline:
+  #     reference_genome_processing:
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # Dfun:
+  #   name: "Drosophila funebris"
+  #   folder_name: "Dfun"
+  #   pipeline:
+  #     reference_genome_processing:
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # Dhis:
+  #   name: "Drosophila histrio"
+  #   folder_name: "Dhis"
+  #   pipeline:
+  #     reference_genome_processing:
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # Dimm:
+  #   name: "Drosophila immigrans"
+  #   folder_name: "Dimm"
+  #   pipeline:
+  #     reference_genome_processing:
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # Drep:
+  #   name: "Drosophila repleta"
+  #   folder_name: "Drep"
+  #   pipeline:
+  #     reference_genome_processing:  
+  #       damage_analysis:
+  #         execute: false
+  #       create_consensus_sequence:
+  #         execute: false
+  # trial_Bger:
+  #   name: "Trial Blattella germanica"
+  #   folder_name: "trial_Bger"
+  # trial_Dsim:
+  #   name: "Trial Drosophila simulans"
+  #   folder_name: "trial_Dsim"
+  # trial_Phortica:
+  #   name: "Trial Phortica"
+  #   folder_name: "trial_Phortica"
+  # trial_Sepsis:
+  #   name: "Trial Sepsis"
+  #   folder_name: "trial_Sepsis"
+  # trial_Mmus:
+  #   name: "Trial Mus musculus"
+  #   folder_name: "trial_Mmus"
+  # trial_Dmel:
+  #   name: "Trial Drosophila melanogaster"
+  #   folder_name: "trial_Dmel"
+  # trial_spike_Dsim:
+  #   name: "Trial Spike Drosophila simulans"
+  #   folder_name: "trial_spike_Dsim"
+  # trial_Dbus:
+  #   name: "Trial Drosophila busckii"
+  #   folder_name: "trial_Dbus"
+  # trial_Dfun:
+  #   name: "Trial Drosophila funebris"
+  #   folder_name: "trial_Dfun"
+  # trial_Dhis:
+  #   name: "Trial Drosophila histrio"
+  #   folder_name: "trial_Dhis"
+  # trial_Dimm:
+  #   name: "Trial Drosophila immigrans"
+  #   folder_name: "trial_Dimm"
+  # trial_Drep:
+  #   name: "Trial Drosophila repleta"
+  #   folder_name: "trial_Drep"
 
 compare_species:
 #  Bger_BgerRun1_comparison: # Unique Name
@@ -87,50 +203,50 @@ compare_species:
 #      reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
 #    Bger_run1:
 #      reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
-  Bger_tBger_comparison: # Unique Name
-    Bger:
-      reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
-    trial_Bger:
-      reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
-  Dsim_tDsim_comparison: # Unique Name
-    Dsim:
-      reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
-    trial_Dsim:
-      reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
-  tDsim_tsDsim_comparison: # Unique Name
-    trial_Dsim:
-      reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
-    trial_spike_Dsim:
-      reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
-  tDsim_tDbus_tDfun_tDhis_tDimm_tDrep_comparison: # Unique Name
-    trial_Dsim:
-      reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
-    trial_Dbus:
-      reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
-    trial_Dfun:
-      reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
-    trial_Dhis:
-      reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
-    trial_Dimm:
-      reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
-    trial_Drep:
-      reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
-  tPhortica_marker:
-    28S:
-      species_id: "trial_Phortica"
-      reference_genome: "marker_28S.fasta"
-    COI3:
-      species_id: "trial_Phortica"
-      reference_genome: "marker_COI3.fasta"
-    COI5:
-      species_id: "trial_Phortica"
-      reference_genome: "marker_COI5.fasta"
-    NC_081078:
-      species_id: "trial_Phortica"
-      reference_genome: "marker_NC_081078.fasta"
-    ND2:
-      species_id: "trial_Phortica"
-      reference_genome: "marker_ND2.fasta"
+  # Bger_tBger_comparison: # Unique Name
+  #   Bger:
+  #     reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
+  #   trial_Bger:
+  #     reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
+  # Dsim_tDsim_comparison: # Unique Name
+  #   Dsim:
+  #     reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
+  #   trial_Dsim:
+  #     reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
+  # tDsim_tsDsim_comparison: # Unique Name
+  #   trial_Dsim:
+  #     reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
+  #   trial_spike_Dsim:
+  #     reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
+  # tDsim_tDbus_tDfun_tDhis_tDimm_tDrep_comparison: # Unique Name
+  #   trial_Dsim:
+  #     reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
+  #   trial_Dbus:
+  #     reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
+  #   trial_Dfun:
+  #     reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
+  #   trial_Dhis:
+  #     reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
+  #   trial_Dimm:
+  #     reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
+  #   trial_Drep:
+  #     reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
+  # tPhortica_marker:
+  #   28S:
+  #     species_id: "trial_Phortica"
+  #     reference_genome: "marker_28S.fasta"
+  #   COI3:
+  #     species_id: "trial_Phortica"
+  #     reference_genome: "marker_COI3.fasta"
+  #   COI5:
+  #     species_id: "trial_Phortica"
+  #     reference_genome: "marker_COI5.fasta"
+  #   NC_081078:
+  #     species_id: "trial_Phortica"
+  #     reference_genome: "marker_NC_081078.fasta"
+  #   ND2:
+  #     species_id: "trial_Phortica"
+  #     reference_genome: "marker_ND2.fasta"
   Bger_RefGenome_comparison: # Unique Name
     Bger_GCA:
       species_id: "Bger"
@@ -138,50 +254,50 @@ compare_species:
     Bger_Saadain:
       species_id: "Bger"
       reference_genome: "Bgerracon1.fasta"
-  Bger_tBger_tDxxx_tPhor_comparison: # Unique Name
-    Bger:
-      reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
-    trial_Bger:
-      reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
-    trial_Dsim:
-      reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
-    trial_Dbus:
-      reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
-    trial_Dfun:
-      reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
-    trial_Drep:
-      reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
-    trial_Dhis:
-      reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
-    trial_Dimm:
-      reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
-    trial_Phortica:
-      reference_genome: "GCA_001014415.1_ASM101441v1_genomic.fna"
-  Dbus_tDbus_comparison:
-    Dbus:
-      reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
-    trial_Dbus:
-      reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
-  Dfun_tDfun_comparison:
-    Dfun:
-      reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
-    trial_Dfun:
-      reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
-  Drep_tDrep_comparison:
-    Drep:
-      reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
-    trial_Drep:
-      reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
-  Dhis_tDhis_comparison:
-    Dhis:
-      reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
-    trial_Dhis:
-      reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
-  Dimm_tDimm_comparison:
-    Dimm:
-      reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
-    trial_Dimm:
-      reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
+  # Bger_tBger_tDxxx_tPhor_comparison: # Unique Name
+  #   Bger:
+  #     reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
+  #   trial_Bger:
+  #     reference_genome: "GCA_000762945.2_Bger_2.0_genomic.fna"
+  #   trial_Dsim:
+  #     reference_genome: "GCF_016746395.2_Prin_Dsim_3.1_genomic.fna"
+  #   trial_Dbus:
+  #     reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
+  #   trial_Dfun:
+  #     reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
+  #   trial_Drep:
+  #     reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
+  #   trial_Dhis:
+  #     reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
+  #   trial_Dimm:
+  #     reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
+  #   trial_Phortica:
+  #     reference_genome: "GCA_001014415.1_ASM101441v1_genomic.fna"
+  # Dbus_tDbus_comparison:
+  #   Dbus:
+  #     reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
+  #   trial_Dbus:
+  #     reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
+  # Dfun_tDfun_comparison:
+  #   Dfun:
+  #     reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
+  #   trial_Dfun:
+  #     reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
+  # Drep_tDrep_comparison:
+  #   Drep:
+  #     reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
+  #   trial_Drep:
+  #     reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
+  # Dhis_tDhis_comparison:
+  #   Dhis:
+  #     reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
+  #   trial_Dhis:
+  #     reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
+  # Dimm_tDimm_comparison:
+  #   Dimm:
+  #     reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
+  #   trial_Dimm:
+  #     reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
   Drosi_NHM24_comparison:
     Dbus:
       reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
@@ -193,27 +309,27 @@ compare_species:
       reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
     Dimm:
       reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
-  Drosi_tDrosi_NHM24_comparison:
-    Dbus:
-      reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
-    trial_Dbus:
-      reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
-    Dfun:
-      reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
-    trial_Dfun:
-      reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
-    Drep:
-      reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
-    trial_Drep:
-      reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna" 
-    Dhis:
-      reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
-    trial_Dhis:
-      reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
-    Dimm:
-      reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
-    trial_Dimm:
-      reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
+  # Drosi_tDrosi_NHM24_comparison:
+  #   Dbus:
+  #     reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
+  #   trial_Dbus:
+  #     reference_genome: "GCF_011750605.1_ASM1175060v1_genomic.fna"
+  #   Dfun:
+  #     reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
+  #   trial_Dfun:
+  #     reference_genome: "GCA_018901825.1_ASM1890182v1_genomic.fna"
+  #   Drep:
+  #     reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna"
+  #   trial_Drep:
+  #     reference_genome: "GCA_018903745.1_ASM1890374v1_genomic.fna" 
+  #   Dhis:
+  #     reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
+  #   trial_Dhis:
+  #     reference_genome: "GCA_958299025.2_idDroHist2.2_genomic.fna"
+  #   Dimm:
+  #     reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
+  #   trial_Dimm:
+  #     reference_genome: "GCA_963583835.1_idDroImmi1.1_genomic.fna"
 
 
 # Paths to external tools
@@ -227,5 +343,9 @@ tools:
   samtools: "samtools"
   angsd: "angsd"
   seqkit: "seqkit"
+  kraken: "kraken"
+  centrifuge: "centrifuge"
+  ecmsdb: "ecmsdb.sh"
+
 
 
