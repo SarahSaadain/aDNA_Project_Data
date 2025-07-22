@@ -141,16 +141,28 @@ python run_analyse_clusters.py GenomeDeltaResult/Brac --min_individuals 1 --only
 ```bash
 python run_analyse_clusters.py GenomeDeltaResult/Bgca --min_individuals 1 --only-dfam-hits
 ```
-# TE Candidate Processing with DeviaTE
+# TE Analysis with DeviaTE
 
 https://github.com/W-L/deviaTE 
 
-## DeviaTE for candidates 
+## TE Libraries
 
-Run [run_gd_result_to_deviate_candidates.py](run_gd_result_to_deviate_candidates.py) to map sequences against known TEs. The candidates are combined by species
+* For Drosi combined `TE_library_Bergman.fasta` and `TE_library_newKofler.fasta` into `TE_library_combined.fasta`
+* For Bger: created `TE_library_giri_repbase_2018.fasta` with `convert_embl_to_fasta.py` from `RepBaseRepeatMaskerEdition-20181026.tar.gz`
+
+## DeviaTE for GD species 
+
+Run [run_gd_result_to_deviate_species_candidates.py](run_gd_result_to_deviate_species_candidates.py) to map sequences against known TEs. The candidates are combined by species
 
 ```bash
-nohup python -u run_gd_result_to_deviate_candidates.py --scg_dir . --library_base TE_library_combined.fasta > deviate_candidates.log 2>&1 &
+nohup python -u run_gd_result_to_deviate_species_candidates.py --scg_dir . --library_base TE_library_combined.fasta --folder_prefix D --output_dir DeviaTE_Analysis_species_candidates > deviate_candidates.log 2>&1 &
+
+nohup python -u run_gd_result_to_deviate_species_candidates.py --scg_dir . --library_base TE_library_giri_repbase_2018.fasta --folder_prefix B  --output_dir DeviaTE_Analysis_species_candidates > deviate_bger_candidates.log  2>&1 &
+
+nohup python -u run_gd_result_to_deviate_species_all_gaps.py --scg_dir . --library_base TE_library_combined.fasta --folder_prefix D --output_dir DeviaTE_Analysis_species_all_gaps > deviate_all_gaps.log 2>&1 &
+
+nohup python -u run_gd_result_to_deviate_species_all_gaps.py --scg_dir . --library_base TE_library_giri_repbase_2018.fasta --folder_prefix B --output_dir DeviaTE_Analysis_species_all_gaps > deviate_bger_all_gaps.log  2>&1 &
+
 ```
 
 ### Processing Workflow of run_gd_result_to_deviate_candidates.py (Per Species)
@@ -186,12 +198,14 @@ For each species (e.g. `DSIM`, `DFUN`, ...), the script performs:
 
    * Passes the deduplicated `.fastq` to `deviaTE`:
 
-## DeviaTE for individuals and all gaps 
+## DeviaTE for gd individuals and all gaps 
 
 Run [run_gd_result_to_deviate_individual_all_gaps.py](run_gd_result_to_deviate_individual_all_gaps.py) to map all gaps of individuals against known TEs. The candidates are combined by species
 
 ```bash
-nohup python -u run_gd_result_to_deviate_individual_all_gaps.py > deviate_individual_all_gaps.log --scg_dir . --library_base TE_library_combined.fasta 2>&1 &
+nohup python -u run_gd_result_to_deviate_individual_all_gaps.py --scg_dir . --library_base TE_library_combined.fasta --folder_prefix D --output_dir DeviaTE_Analysis_individual_all_gaps > deviate_bger_individual_all_gaps.log 2>&1 &
+
+nohup python -u run_gd_result_to_deviate_individual_all_gaps.py --scg_dir . --library_base TE_library_giri_repbase_2018.fasta --folder_prefix B --output_dir DeviaTE_Analysis_individual_all_gaps > deviate_dros_individual_all_gaps.log  2>&1 &
 ```
 
 ### Processing Workflow of run_gd_result_to_deviate_individual_all_gaps.py (Per Species)
@@ -215,6 +229,16 @@ For each species GD result folder, the script performs:
 4. **Run deviaTE**
 
    * Passes the deduplicated `.fastq` to `deviaTE`:
+
+## DeviaTE for original postprocessed reads
+
+Run [run_original_reads_to_deviate.py](run_original_reads_to_deviate.py) to map all original postprocessed reads of individuals against known TEs. The candidates are combined by species
+
+```bash
+# todo Drosi
+
+nohup python -u run_original_reads_to_deviate.py --read_dir /mnt/data5/sarah/aDNA/Bger/processed/prepared_for_ref_genome/ --scg_dir . --library_base /mnt/data5/sarah/TE_Analysis/TE_library_giri_repbase_2018.fasta --output_dir DeviaTE_Analysis_original > deviate_Bger_individual_all_reads.log  2>&1 &
+```
 
 ## Single copy gene normalization with DeviaTE
 
@@ -257,6 +281,10 @@ python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_
 python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dimm/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna --prefix Dimm
 
 python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Dsim/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/Dsim/raw/ref_genome/GCF_016746395.2_Prin_Dsim_3.1_genomic.fna --prefix Dsim
+
+#python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Brac/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/DsBgerim/raw/ref_genome/Bgerracon1.fasta --prefix Brac
+
+#python /mnt/data5/sarah/TE_Analysis/get_single_copy_gene.py /mnt/data5/sarah/TE_Analysis/BUSCO_Analysis_Bgca/BUSCO_Analysis/ /mnt/data5/sarah/aDNA/DsBgerim/raw/ref_genome/GCA_000762945.2_Bger_2.0_genomic.fna --prefix Bgca
 ```
 
 Above commands create these files (`<species>_scg_<busco_id>_nt.fa`):
@@ -279,8 +307,59 @@ This script [run_deviate_check_results.py](run_deviate_check_results.py) scans a
 ## Usage
 
 ```bash
-python run_deviate_check_results.py
-````
+# species all gaps
+
+nohup python -u run_deviate_check_results.py --folder_prefix Bgca DeviaTE_Analysis_species_all_gaps/ --coverage_minimum 0.1 > deviate_bgca_te_all_gaps.tsv 2>&1 &
+
+nohup python -u run_deviate_check_results.py --folder_prefix Brac DeviaTE_Analysis_species_all_gaps/ --coverage_minimum 0.1 > deviate_brac_te_all_gaps.tsv 2>&1 &
+
+nohup python -u run_deviate_check_results.py --folder_prefix D deviaTE_Analysis_species_all_gaps/ --coverage_minimum 0.1 > deviate_drosi_te_all_gaps.tsv  2>&1 &
+
+# species candidates
+
+nohup python -u run_deviate_check_results.py --folder_prefix Bgca DeviaTE_Analysis_species_candidates/ --coverage_minimum 0.1 > deviate_bgca_te_candidates.tsv 2>&1 &
+
+nohup python -u run_deviate_check_results.py --folder_prefix Brac DeviaTE_Analysis_species_candidates/ --coverage_minimum 0.1 > deviate_brac_te_candidates.tsv 2>&1 &
+
+nohup python -u run_deviate_check_results.py --folder_prefix D DeviaTE_Analysis_species_candidates/ --coverage_minimum 0.1 > deviate_drosi_te_candidates.tsv  2>&1 &
+
+# individuals all gaps
+
+nohup python -u run_deviate_check_results.py --folder_prefix Bgca DeviaTE_Analysis_individual_all_gaps/ --coverage_minimum 0.1 > deviate_bgca_individuals_te_all_gaps.tsv 2>&1 &
+
+nohup python -u run_deviate_check_results.py --folder_prefix Brac DeviaTE_Analysis_individual_all_gaps/ --coverage_minimum 0.1 > deviate_brac_individuals_te_all_gaps.tsv 2>&1 &
+
+nohup python -u run_deviate_check_results.py --folder_prefix D DeviaTE_Analysis_individual_all_gaps/ --coverage_minimum 0.1 > deviate_drosi_individuals_te_all_gaps.tsv  2>&1 &
+
+nohup python -u run_deviate_check_results.py --folder_prefix Bger DeviaTE_Analysis_original/ --coverage_minimum 0.1 > deviate_drosi_individuals_te_all_gaps.tsv  2>&1 &
+```
+
+## Sample output
+
+```sh
+file_path       nonzero_lines   total_lines     coverage_percent
+Bgca/Bgca_deduplicated_candidates.fastq.ACADEM-3_BF.deviate     30      8481    0.35
+Bgca/Bgca_deduplicated_candidates.fastq.ACADEM-8_SK.deviate     30      8258    0.36
+Bgca/Bgca_deduplicated_candidates.fastq.AG-JOCK-13.deviate      57      4443    1.28
+Bgca/Bgca_deduplicated_candidates.fastq.AMBAL-2_FCY.deviate     40      10593   0.38
+Bgca/Bgca_deduplicated_candidates.fastq.ATCOPIA20I.deviate      35      4559    0.77
+Bgca/Bgca_deduplicated_candidates.fastq.ATCOPIA24I.deviate      57      4707    1.21
+Bgca/Bgca_deduplicated_candidates.fastq.ATHILA6A_I.deviate      39      7835    0.50
+Bgca/Bgca_deduplicated_candidates.fastq.BURRO3_I.deviate        34      23021   0.15
+Bgca/Bgca_deduplicated_candidates.fastq.BURRO3_LTR.deviate      136     4038    3.37
+Bgca/Bgca_deduplicated_candidates.fastq.CACTA_LP.deviate        49      12483   0.39
+Bgca/Bgca_deduplicated_candidates.fastq.CHAPAEV-N1_HM.deviate   39      3411    1.14
+Bgca/Bgca_deduplicated_candidates.fastq.CHAPAEV3-4_PM.deviate   608     2347    25.91
+Bgca/Bgca_deduplicated_candidates.fastq.COPIA-39_PRU-I.deviate  45      4209    1.07
+Bgca/Bgca_deduplicated_candidates.fastq.COPIA-3_MLE-I.deviate   28      5337    0.52
+```
+
+**Tip**: to get all values above a certain percent level:
+
+```bash
+# e.g. 10 percent
+awk '$4 > 10' deviate_bgca_te_all_gaps.tsv 
+```
 
 ## What It Does
 
@@ -288,7 +367,6 @@ python run_deviate_check_results.py
 * Parses `.deviate` files
 * Flags files that contain at least one line with non-zero coverage
 * Prints the paths of these candidate files to the console
-
 
 ## Notes
 
