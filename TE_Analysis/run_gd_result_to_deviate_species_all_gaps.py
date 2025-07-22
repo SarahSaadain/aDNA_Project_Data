@@ -61,35 +61,34 @@ def make_dummy_quality(seq):
     return [40] * len(seq)  # 40 corresponds to high quality "I"
 
 
-def process_species(individual, file_list, output_base_dir, single_copy_gene_file=None, library_file=None):
+def process_species(species, file_list, output_base_dir, single_copy_gene_file=None, library_file=None):
     """Combine FASTA files and run deduplication + deviaTE for a species."""
-    individual_dir = os.path.join(output_base_dir, individual)
-    os.makedirs(individual_dir, exist_ok=True)
+    species_dir = os.path.join(output_base_dir, species)
+    os.makedirs(species_dir, exist_ok=True)
 
-    combined_path = os.path.join(individual_dir, f"{individual}_combined_candidates.fasta")
-    combined_fastq = os.path.join(individual_dir, f"{individual}_combined_candidates.fastq")
-    dedup_fastq = os.path.join(individual_dir, f"{individual}_deduplicated_candidates.fastq")
+    combined_path = os.path.join(species_dir, f"{species}_combined_candidates.fasta")
+    combined_fastq = os.path.join(species_dir, f"{species}_combined_candidates.fastq")
+    dedup_fastq = os.path.join(species_dir, f"{species}_deduplicated_candidates.fastq")
 
-    print(f"\n🔬 Processing species: {individual} ({len(file_list)} files)")
+    print(f"\n🔬 Processing species: {species} ({len(file_list)} files)")
 
     for folder_name, fasta_path in file_list:
         if not os.path.isfile(fasta_path):
             sys.exit(f"❌ Missing input file: {fasta_path}")
 
-    library_file_species = os.path.join(individual_dir, f"{individual}_te_library.fasta")
+    library_file_species = os.path.join(species_dir, f"{species}_te_library.fasta")
 
     scg_names = []
     if single_copy_gene_file:
         with open(single_copy_gene_file, "r") as scg_file:
-
             i = 0
             for line in scg_file:
                 if line.startswith(">"):
                     i += 1
-                    scg_names.append(f"{individual}_SCG_{i}")
+                    scg_names.append(f"{species}_SCG_{i}")
 
         if not os.path.exists(library_file_species):
-            print (f"  🧬 Creating TE library for {individual} at {library_file_species}...")
+            print (f"  🧬 Creating TE library for {species} at {library_file_species}...")
             with open(library_file_species, "w") as outfile:
                 # Write the first file (TE library)
                 with open(library_file, "r") as lib_file:
@@ -98,7 +97,7 @@ def process_species(individual, file_list, output_base_dir, single_copy_gene_fil
                         
                         if not line:
                             continue  # skip empty lines
-
+                        
                         outfile.write(line.upper() + "\n")
 
                 # Write the second file (SCG file)
@@ -112,9 +111,10 @@ def process_species(individual, file_list, output_base_dir, single_copy_gene_fil
 
                         if line.startswith(">"):
                             i += 1
-                            outfile.write(f">{individual}_SCG_{i}\n")
+                            outfile.write(f">{species}_SCG_{i}\n")
                         else:
                             outfile.write(line.upper() + "\n")
+                    
 
     else:
         scg_names = ["Dmel_rpl32", "Dmel_piwi"]
@@ -144,7 +144,7 @@ def process_species(individual, file_list, output_base_dir, single_copy_gene_fil
                     for line in scg_file:
                         if line.startswith(">"):
                             i += 1
-                            outfile.write(f">{individual}_SCG_{i}\n")
+                            outfile.write(f">{species}_SCG_{i}\n")
                         else:
                             outfile.write(line.upper())
 
@@ -161,11 +161,11 @@ def process_species(individual, file_list, output_base_dir, single_copy_gene_fil
     if os.path.exists(dedup_fastq):
         print(f"  ⏩ Skipping deduplication: {dedup_fastq} already exists.")
     else:
-        success = run_fastp(combined_fastq, dedup_fastq, individual, individual_dir)
+        success = run_fastp(combined_fastq, dedup_fastq, species, species_dir)
         if not success:
             return
 
-    run_deviate(dedup_fastq, individual_dir, library_file_species, scg_names)
+    run_deviate(dedup_fastq, species_dir, library_file_species, scg_names)
 
 
 def main():
@@ -175,7 +175,7 @@ def main():
         help="Input base directory containing species folders."
     )
     parser.add_argument(
-        "--output_dir", type=str, default="DeviaTE_Analysis",
+        "--output_dir", type=str, default="DeviaTE_Analysis_candidates",
         help="Output base directory."
     )
     parser.add_argument(
@@ -221,19 +221,19 @@ def main():
     species_groups = defaultdict(list)
     for filepath in fasta_files:
         folder_name = os.path.basename(os.path.dirname(filepath))
-        species_groups[folder_name].append((folder_name, filepath))
+        species_prefix = folder_name[:4]  # Adjust based on your naming
+        species_groups[species_prefix].append((folder_name, filepath))
 
-    for individual, file_list in species_groups.items():
-        species = individual[:4]  # Use first 4 characters as species name
+    for species, file_list in species_groups.items():
         single_copy_gene_file = os.path.join(scg_dir, f"{species}_scg.fasta")
 
         if os.path.isfile(single_copy_gene_file):
-            print(f"🔍 Using SCG file for individual {individual}: {single_copy_gene_file}")
+            print(f"🔍 Using SCG file for species {species}: {single_copy_gene_file}")
         else:
             single_copy_gene_file = None
-            print(f"⚠️ No SCG file found for individual {individual}, using default SCG genes.")
+            print(f"⚠️ No SCG file found for species {species}, using default SCG genes.")
 
-        process_species(individual, file_list, output_base_dir, single_copy_gene_file, args.library_base)
+        process_species(species, file_list, output_base_dir, single_copy_gene_file, args.library_base)
 
     print("\n✅ All processing completed.")
 
