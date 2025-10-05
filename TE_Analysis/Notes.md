@@ -143,6 +143,12 @@ python run_analyse_clusters.py GenomeDeltaResult/Bgca --min_individuals 1 --only
 ```
 # TE Analysis with DeviaTE
 
+Before running any deviate command use 
+
+```bash
+conda activate deviate
+```
+
 https://github.com/W-L/deviaTE 
 
 ## TE Libraries
@@ -238,6 +244,8 @@ Run [run_original_reads_to_deviate.py](run_original_reads_to_deviate.py) to map 
 # todo Drosi
 
 nohup python -u run_original_reads_to_deviate.py --read_dir /mnt/data5/sarah/aDNA/Bger/processed/prepared_for_ref_genome/ --scg_dir . --library_base /mnt/data5/sarah/TE_Analysis/TE_library_giri_repbase_2018.fasta --output_dir DeviaTE_Analysis_original > deviate_Bger_individual_all_reads.log  2>&1 &
+
+nohup python -u run_original_reads_to_deviate.py --read_dir /mnt/data5/sarah/aDNA/Dsim/processed/prepared_for_ref_genome/ --scg_dir . --library_base /mnt/data5/sarah/TE_Analysis/TE_library_combined.fasta --output_dir DeviaTE_Analysis_Dsim_original > deviate_Dsim_individual_all_reads.log  2>&1 &
 ```
 
 ## Single copy gene normalization with DeviaTE
