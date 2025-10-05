@@ -17,7 +17,7 @@ def run_deviate(fastq_path, work_dir, library_file_species, scg_names):
 
     if library_file_species:
         deviate_cmd.append("--library")
-        deviate_cmd.append(library_file_species)
+        deviate_cmd.append(os.path.basename(library_file_species))
 
     if scg_names:
         deviate_cmd.append("--single_copy_genes")
