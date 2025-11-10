@@ -8,7 +8,7 @@
 ## MD5 Check
 
 ```bash
-nohup sh -c 'md5sum 22TLJTLT4_*_R18987_20250612.tar.gz > md5sums.txt' &> md5sum.log &
+nohup sh -c 'md5sum 232WFTLT3_6_R19227_20250719.tar.gz > md5sums.txt' &> md5sum.log &
 ```
 
 Check if running:
