@@ -248,17 +248,17 @@ mv /mnt/data5/sarah/aDNA/sequencing_data/Drosi_NHM_2024/reads_collected/Drep* /m
 
 
 ```bash
-mkdir /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome 
-mkdir /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome
-mkdir /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome
-mkdir /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome
-mkdir /mnt/data5/sarah/aDNA/Drep/raw/ref_genome
+mkdir /mnt/data5/sarah/aDNA/Dbus/raw/ref 
+mkdir /mnt/data5/sarah/aDNA/Dfun/raw/ref
+mkdir /mnt/data5/sarah/aDNA/Dhis/raw/ref
+mkdir /mnt/data5/sarah/aDNA/Dimm/raw/ref
+mkdir /mnt/data5/sarah/aDNA/Drep/raw/ref
 
 
-mv /mnt/data5/sarah/aDNA/trial_Dbus/raw/ref_genome/* /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome 
-mv /mnt/data5/sarah/aDNA/trial_Dfun/raw/ref_genome/* /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome
-mv /mnt/data5/sarah/aDNA/trial_Dhis/raw/ref_genome/* /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome
-mv /mnt/data5/sarah/aDNA/trial_Dimm/raw/ref_genome/* /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome
-mv /mnt/data5/sarah/aDNA/trial_Drep/raw/ref_genome/* /mnt/data5/sarah/aDNA/Drep/raw/ref_genome
+mv /mnt/data5/sarah/aDNA/trial_Dbus/raw/ref/* /mnt/data5/sarah/aDNA/Dbus/raw/ref 
+mv /mnt/data5/sarah/aDNA/trial_Dfun/raw/ref/* /mnt/data5/sarah/aDNA/Dfun/raw/ref
+mv /mnt/data5/sarah/aDNA/trial_Dhis/raw/ref/* /mnt/data5/sarah/aDNA/Dhis/raw/ref
+mv /mnt/data5/sarah/aDNA/trial_Dimm/raw/ref/* /mnt/data5/sarah/aDNA/Dimm/raw/ref
+mv /mnt/data5/sarah/aDNA/trial_Drep/raw/ref/* /mnt/data5/sarah/aDNA/Drep/raw/ref
 ```
 

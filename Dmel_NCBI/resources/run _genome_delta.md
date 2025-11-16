@@ -48,7 +48,7 @@ Dmel_NCBI/processed/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic/mapped/Dmel25
 Ref genome:
 
 ```
-Dmel_NCBI/raw/ref_genome/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna
+Dmel_NCBI/raw/ref/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna
 ```
 
 ### **Dbus**
@@ -57,7 +57,7 @@ Dmel_NCBI/raw/ref_genome/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna
 #!/bin/bash
 
 # Set reference genome
-REFERENCE="/mnt/data5/sarah/aDNA/Dmel_NCBI/raw/ref_genome/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna"
+REFERENCE="/mnt/data5/sarah/aDNA/Dmel_NCBI/raw/ref/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna"
 
 # Input BAM directory
 BAM_DIR="/mnt/data5/sarah/aDNA/Dmel_NCBI/processed/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic/mapped"

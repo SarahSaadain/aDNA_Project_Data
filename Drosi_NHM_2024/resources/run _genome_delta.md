@@ -41,7 +41,7 @@ Files:
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus_combined.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/DbusCombined/nohup_Dbus.log 2>&1 &
 ```
@@ -51,7 +51,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun_combined.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/DfunCombined/nohup_Dfun.log 2>&1 &
 ```
@@ -61,7 +61,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep_combined.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/DrepCombined/nohup_Drep.log 2>&1 &
 ```
@@ -71,7 +71,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis_combined.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/DhisCombined/nohup_Dhis.log 2>&1 &
 ```
@@ -81,7 +81,7 @@ nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm_combined.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/DimmCombined/nohup_Dimm.log 2>&1 &
 ```
@@ -109,61 +109,61 @@ Files:
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus01.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus01 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus01/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus02.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus02 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus02/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus03.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus03 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus03/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus04.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus04 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus04/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus05.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus05 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus05/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus06.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus06 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus06/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus07.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus07 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus07/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus08.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus08 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus08/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus09.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus09 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus09/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dbus/processed/GCF_011750605.1_ASM1175060v1_genomic/mapped/Dbus10.fastq_GCF_011750605.1_ASM1175060v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus10 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dbus10/nohup.log 2>&1 &
 ```
@@ -186,61 +186,61 @@ Files:
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun01.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun01 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun01/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun02.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun02 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun02/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun03.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun03 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun03/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun04.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun04 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun04/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun05.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun05 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun05/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun06.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun06 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun06/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun07.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun07 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun07/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun08.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun08 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun08/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun09.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun09 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun09/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dfun/processed/GCA_018901825.1_ASM1890182v1_genomic/mapped/Dfun10.fastq_GCA_018901825.1_ASM1890182v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun10 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dfun10/nohup.log 2>&1 &
 ```
@@ -258,31 +258,31 @@ Files:
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis01.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis01 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis01/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis02.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis02 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis02/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis03.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis03 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis03/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis04.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis04 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis04/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dhis/processed/GCA_958299025.2_idDroHist2.2_genomic/mapped/Dhis05.fastq_GCA_958299025.2_idDroHist2.2_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref_genome/GCA_958299025.2_idDroHist2.2_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dhis/raw/ref/GCA_958299025.2_idDroHist2.2_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis05 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dhis05/nohup.log 2>&1 &
 ```
@@ -300,31 +300,31 @@ Files:
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm01.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm01 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm01/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm02.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm02 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm02/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm03.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm03 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm03/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm04.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm04 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm04/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Dimm/processed/GCA_963583835.1_idDroImmi1.1_genomic/mapped/Dimm05.fastq_GCA_963583835.1_idDroImmi1.1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm05 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Dimm05/nohup.log 2>&1 &
 ```
@@ -348,61 +348,61 @@ Files:
 ```bash
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep01.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep01 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep01/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep02.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep02 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep02/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep03.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep03 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep03/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep04.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep04 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep04/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep05.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep05 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep05/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep06.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep06 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep06/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep07.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep07 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep07/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep08.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep08 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep08/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep09.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep09 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep09/nohup.log 2>&1 &
 
 nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
   --bam /mnt/data5/sarah/aDNA/Drep/processed/GCA_018903745.1_ASM1890374v1_genomic/mapped/Drep10.fastq_GCA_018903745.1_ASM1890374v1_genomic_sorted.bam \
-  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna \
+  --fa /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna \
   --of /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep10 \
   --t 10 > /mnt/data5/sarah/TE_Analysis/GenomeDeltaResult/Drep10/nohup.log 2>&1 &
 ```

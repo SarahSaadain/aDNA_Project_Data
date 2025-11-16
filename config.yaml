@@ -42,13 +42,11 @@ pipeline:
     statistical_analysis:
       execute: true
 
-  reference_genome_processing:
+  reference_processing:
     execute: true
-    map_reads_to_reference_genome:
+    map_reads_to_reference:
       execute: true
     damage_analysis:
-      execute: true
-    create_consensus_sequence:
       execute: true
     endogenous_reads_analysis: 
       execute: true

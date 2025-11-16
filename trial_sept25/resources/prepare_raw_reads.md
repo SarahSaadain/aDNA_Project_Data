@@ -213,11 +213,11 @@ mv /mnt/data2/sarah/sequencing_data/trial_sequencing_sept25/reads_collected/tPvu
 ## Move ref genomes
 
 ```bash
-cp /mnt/data5/sarah/aDNA/Dbus/raw/ref_genome/GCF_011750605.1_ASM1175060v1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDbus/raw/ref_genome/
-cp /mnt/data5/sarah/aDNA/Dfun/raw/ref_genome/GCA_018901825.1_ASM1890182v1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDfun/raw/ref_genome/
-cp /mnt/data5/sarah/aDNA/Dimm/raw/ref_genome/GCA_963583835.1_idDroImmi1.1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDimm/raw/ref_genome/
-cp /mnt/data5/sarah/aDNA/Drep/raw/ref_genome/GCA_018903745.1_ASM1890374v1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDrep/raw/ref_genome/
-cp /mnt/data5/sarah/aDNA/Bger/raw/ref_genome/Bgerracon1.fasta* /mnt/data2/sarah/aDNA_snakemake/tBger/raw/ref_genome/
+cp /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605.1_ASM1175060v1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDbus/raw/ref/
+cp /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDfun/raw/ref/
+cp /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDimm/raw/ref/
+cp /mnt/data5/sarah/aDNA/Drep/raw/ref/GCA_018903745.1_ASM1890374v1_genomic.fna* /mnt/data2/sarah/aDNA_snakemake/tDrep/raw/ref/
+cp /mnt/data5/sarah/aDNA/Bger/raw/ref/Bgerracon1.fasta* /mnt/data2/sarah/aDNA_snakemake/tBger/raw/ref/
 ```
 
 ## Get missing ref genomes
