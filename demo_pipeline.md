@@ -5,15 +5,15 @@ cd /mnt/data5/sarah
 ```
 
 ```bash
-git clone https://github.com/SarahSaadain/aDNA_Pipeline_Snakemake.git demo_pipeline
+git clone https://github.com/SarahSaadain/aDNA_Pipeline_Snakemake.git demo_adna_pipeline
 ```
 
 ```bash
-cp dateset_demo_pipeline demo_pipeline/demo
+cp dateset_demo_pipeline demo_adna_pipeline/demo -r
 ```
 
 ```bash
-cd demo_pipeline
+cd demo_adna_pipeline
 ```
 
 ```bash
