@@ -1,32 +1,32 @@
 On roco:
 
-´´´bash
+```bash
 cd /mnt/data5/sarah
-´´´
+```
 
-´´´bash
+```bash
 git clone git clone https://github.com/SarahSaadain/aDNA_Pipeline_Snakemake.git demo_pipeline
-´´´
+```
 
-´´´bash
+```bash
 mv demo_pipeline_dataset demo_pipeline/demo
-´´´
+```
 
-´´´bash
+```bash
 cd demo_pipeline
-´´´
+```
 
-´´´bash
+```bash
 conda activate snakemake
-´´´
+```
 
-´´´bash
+```bash
 snakemake --cores 8 --use-conda --keep-going -n
-´´´
+```
 
-´´´bash
+```bash
 snakemake --cores <number_of_threads> --use-conda --keep-going
-´´´
+```
 
 Download data to laptop:
 
