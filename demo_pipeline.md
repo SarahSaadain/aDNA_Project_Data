@@ -5,7 +5,7 @@ cd /mnt/data5/sarah
 ```
 
 ```bash
-git clone git clone https://github.com/SarahSaadain/aDNA_Pipeline_Snakemake.git demo_pipeline
+git clone https://github.com/SarahSaadain/aDNA_Pipeline_Snakemake.git demo_pipeline
 ```
 
 ```bash
