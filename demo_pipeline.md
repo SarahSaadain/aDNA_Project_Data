@@ -25,7 +25,7 @@ snakemake --cores 8 --use-conda --keep-going -n
 ```
 
 ```bash
-snakemake --cores <number_of_threads> --use-conda --keep-going
+snakemake --cores 20 --use-conda --keep-going
 ```
 
 Download data to laptop:
