@@ -3,8 +3,11 @@
 project_name: "aDNA_Project"
 
 pipeline:
+  global:
+    skip_existing_files: true
+
   raw_reads_processing:
-    execute: false
+    execute: true
     quality_checking_raw:
       execute: true
     adapter_removal:
@@ -19,21 +22,11 @@ pipeline:
       execute: true
     quality_checking_quality_filtered:
       execute: true
+    quality_checking_merged:
+      execute: true
     contamination_analysis:
       execute: true
       tools:
-        centrifuge:
-          execute: true
-          settings:
-            conda_env: "../../../../envs/centrifuge.yaml"
-            executable: "centrifuge"
-            database: "/mnt/data5/sarah/aDNA/centrifuge_db"
-        kraken: 
-          execute: true
-          settings:
-            conda_env: "../../../../envs/kraken.yaml"
-            executable: "kraken"
-            database: "/mnt/data5/sarah/aDNA/kraken_db"
         ecmsd:
           execute: true
           settings:
@@ -42,9 +35,11 @@ pipeline:
     statistical_analysis:
       execute: true
 
-  reference_processing:
+  reference_genome_processing:
     execute: true
-    map_reads_to_reference:
+    deduplication:
+      execute: false
+    damage_rescaling:
       execute: true
     damage_analysis:
       execute: true
@@ -53,81 +48,51 @@ pipeline:
     coverage_analysis: 
       execute: true
 
-# Species-specific settings
-species:
-# data2:
-  tDcar:
-    name: "Drosophila cardini"
-  tDbus:
-    name: "Drosophila busckii"
-  tDfun:
-    name: "Drosophila funebris"
-  tDimm:
-    name: "Drosophila immigrans"
-  tDrep:
-    name: "Drosophila repleta"
-  tDmer:
-    name: "Drosophila mercatorum"
-  tDwil:
-    name: "Drosophila willistoni"
-  tDana:
-    name: "Drosophila annanasae"
-  tBger:
-    name: "Blattella germanica"
-  tBgerRun1:
-    name: "Blattella germanica"
-  tTni:
-    name: "Trichoplusia ni"
-  tOcap:
-    name: "Ophyra capensis"
-  tLlit:
-    name: "Littorina littorea"
-  tPvul:
-    name: "Patella vulgata"
-  tPhum:
-    name: "Pediculus humuanus"
 
-# data5:
-#species:
-  Bger:
-    name: "Blattella germanica"
+species:
+#  Bger:
+#    name: "Blattella germanica"
+#  Dmel_NCBI:
+#    name: "Drosophila melanogaster"
   Mmus:
     name: "Mus musculus"
-  Dsim:
-    name: "Drosophila simulans"
-  Dmel:
-    name: "Drosophila melanogaster"
-  Dbus:
-    name: "Drosophila busckii"
-  Dfun:
-    name: "Drosophila funebris"
-  Dhis:
-    name: "Drosophila histrio"
-  Dimm:
-    name: "Drosophila immigrans"
-  Drep:
-    name: "Drosophila repleta"
-  trial_Bger:
-    name: "Trial Blattella germanica"
-  trial_Dsim:
-    name: "Trial Drosophila simulans"
-  trial_Phortica:
-    name: "Trial Phortica"
-  trial_Sepsis:
-    name: "Trial Sepsis"
   trial_Mmus:
     name: "Trial Mus musculus"
-  trial_Dmel:
-    name: "Trial Drosophila melanogaster"
-  trial_spike_Dsim:
-    name: "Trial Spike Drosophila simulans"
-  trial_Dbus:
-    name: "Trial Drosophila busckii"
-  trial_Dfun:
-    name: "Trial Drosophila funebris"
-  trial_Dhis:
-    name: "Trial Drosophila histrio"
-  trial_Dimm:
-    name: "Trial Drosophila immigrans"
-  trial_Drep:
-    name: "Trial Drosophila repleta"
+#  Dsim:
+#    name: "Drosophila simulans"
+#  Dmel:
+#    name: "Drosophila melanogaster"
+#  Dbus:
+#    name: "Drosophila busckii"
+#  Dfun:
+#    name: "Drosophila funebris"
+#  Dhis:
+#    name: "Drosophila histrio"
+#  Dimm:
+#    name: "Drosophila immigrans"
+#  Drep:
+#    name: "Drosophila repleta"
+#  trial_Bger:
+#    name: "Trial Blattella germanica"
+#  trial_Dsim:
+#    name: "Trial Drosophila simulans"
+#  trial_Phortica:
+#    name: "Trial Phortica"
+#  trial_Sepsis:
+#    name: "Trial Sepsis"
+#  trial_Mmus:
+#    name: "Trial Mus musculus"
+#  trial_Dmel:
+#    name: "Trial Drosophila melanogaster"
+#  trial_spike_Dsim:
+#    name: "Trial Spike Drosophila simulans"
+#  trial_Dbus:
+#    name: "Trial Drosophila busckii"
+#  trial_Dfun:
+#    name: "Trial Drosophila funebris"
+#  trial_Dhis:
+#    name: "Trial Drosophila histrio"
+#  trial_Dimm:
+#    name: "Trial Drosophila immigrans"
+#  trial_Drep:
+#    name: "Trial Drosophila repleta"
