@@ -83,7 +83,7 @@ for BAM_FILE in ${BAM_DIR}/Dmel*.bam; do
 
     # Run GenomeDelta with nohup
     echo "Launching GenomeDelta for ${SAMPLE_NAME}..."
-    nohup bash /mnt/data5/sarah/GenomeDelta/linux/main.sh \
+    nohup bash /mnt/data5/sarah/app_GenomeDelta/linux/main.sh \
         --bam "$BAM_FILE" \
         --fa "$REFERENCE" \
         --of "$OUTPUT_DIR" \
