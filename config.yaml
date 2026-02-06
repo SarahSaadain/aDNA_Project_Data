@@ -50,8 +50,8 @@ pipeline:
 
 
 species:
-#  Bger:
-#    name: "Blattella germanica"
+  Bger:
+    name: "Blattella germanica"
 #  Dmel_NCBI:
 #    name: "Drosophila melanogaster"
   Mmus:
