@@ -1,0 +1,143 @@
+species:
+  Clup:
+    name: Canis lupus
+    lineage: carnivora_odb10
+    reads:
+      - /mnt/data5/sarah/aDNA/Clup/processed/reads/reads_merged/Clup2.fastq.gz
+      - /mnt/data5/sarah/aDNA/Clup/processed/reads/reads_merged/Clup3.fastq.gz
+      - /mnt/data5/sarah/aDNA/Clup/processed/reads/reads_merged/Clup4.fastq.gz
+      - /mnt/data5/sarah/aDNA/Clup/processed/reads/reads_merged/Clup5.fastq.gz
+    reference: /mnt/data5/sarah/aDNA/Clup/raw/ref/GCF_011100685_1_UU_Cfam_GSD_1_0_genomic.fa 
+
+  Dfun:
+    name: Drosophila funebris
+    lineage: drosophilidae_odb12
+    reads:
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun01.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun02.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun03.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun04.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun05.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun06.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun07.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun08.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun09.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dfun/processed/reads/reads_merged/Dfun10.fastq.gz
+      - /mnt/data5/sarah/modernDNA/Dfun20/processed/reads/reads_merged/Dfun20.fastq.gz
+    reference: /mnt/data5/sarah/aDNA/Dfun/raw/ref/GCA_018901825.1_ASM1890182v1_genomic.fa
+  
+  Dimm:
+    name: Drosophila immigrans
+    lineage: drosophilidae_odb12
+    reads:
+      - /mnt/data5/sarah/aDNA/Dimm/processed/reads/reads_merged/Dimm01.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dimm/processed/reads/reads_merged/Dimm02.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dimm/processed/reads/reads_merged/Dimm03.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dimm/processed/reads/reads_merged/Dimm04.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dimm/processed/reads/reads_merged/Dimm05.fastq.gz
+      - /mnt/data5/sarah/modernDNA/Dimm20/processed/reads/reads_merged/Dimm20.fastq.gz
+    reference: /mnt/data5/sarah/aDNA/Dimm/raw/ref/GCA_963583835.1_idDroImmi1.1_genomic.fa
+  
+  Dhis:
+    name: Drosophila histrio
+    lineage: drosophilidae_odb12
+    reads:
+      - /mnt/data5/sarah/aDNA/Dhis/processed/reads/reads_merged/Dhis01.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dhis/processed/reads/reads_merged/Dhis02.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dhis/processed/reads/reads_merged/Dhis03.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dhis/processed/reads/reads_merged/Dhis04.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dhis/processed/reads/reads_merged/Dhis05.fastq.gz
+      - /mnt/data5/sarah/modernDNA/Dhis20/processed/reads/reads_merged/Dhis20.fastq.gz
+    reference: /mnt/data5/sarah/aDNA/Dhis/raw/ref/GCA_958299025.2_idDroHist2.2_genomic.fa
+  
+  Dbus:
+    name: Drosophila busckii
+    lineage: drosophilidae_odb12
+    reads:
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus01.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus02.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus03.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus04.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus05.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus06.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus07.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus08.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus09.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dbus/processed/reads/reads_merged/Dbus10.fastq.gz
+      - /mnt/data5/sarah/modernDNA/Dbus_SRR826814/DbusSRR826814.fastq.gz
+    reference: /mnt/data5/sarah/aDNA/Dbus/raw/ref/GCF_011750605_1_ASM1175060v1_genomic.fa
+
+  Dsim:
+    name: Drosophila simulans
+    lineage: drosophilidae_odb12
+    reads:
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim01.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim02.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim03.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim04.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim05.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim06.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim07.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim08.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim09.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim10.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim12.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim13.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim17.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim18.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dsim/processed/reads/reads_merged/Dsim20.fastq.gz
+      - /mnt/data5/sarah/modernDNA/Dsim20/processed/reads/reads_merged/Dsim20.fastq.gz
+    reference: /mnt/data5/sarah/aDNA/Dsim/raw/ref/GCF_016746395.2_Prin_Dsim_3.1_genomic.fa
+
+#  Bger:
+#    name: Blattella germanica
+#    lineage: insecta_odb12
+#    reads:
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger1.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger2.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger3.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger04.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger05.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger06.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger07.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger08.fastq.gz 
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger09.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger10.fastq.gz
+#      - /mnt/data5/sarah/aDNA/Bger/processed/reads/reads_merged/Bger11.fastq.gz
+#      - /mnt/data5/sarah/modernDNA/BgerKwizdaC/processed/reads/reads_merged/BgerKwizdaC.fastq.gz
+#      - /mnt/data5/sarah/modernDNA/BgerFranceD/processed/reads/reads_merged/BgerFranceD.fastq.gz
+#      - /mnt/data5/sarah/modernDNA/BgerJwaxE/processed/reads/reads_merged/BgerJwaxE.fastq.gz
+#      - /mnt/data5/sarah/modernDNA/BgerOrlandoF/processed/reads/reads_merged/BgerOrlandoF.fastq.gz
+#    reference: /mnt/data5/sarah/aDNA/Bger/raw/ref/Bger_hybrid_2026_01_nocont.fa
+
+  Dmel_NCBI:
+    name: Drosophila melanogaster NCBI
+    lineage: drosophilidae_odb12
+    reads:
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel01.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel02.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel03.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel04.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel05.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel06.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel07.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel08.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel09.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel10.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel11.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel12.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel13.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel14.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel15.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel16.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel17.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel18.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel20.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel21.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel22.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel23.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel24.fastq.gz
+      - /mnt/data5/sarah/aDNA/Dmel_NCBI/processed/reads/reads_merged/Dmel25.fastq.gz
+      - /mnt/data5/sarah/modernDNA/Dmel20/processed/reads/reads_merged/Dmelmodern.fastq.gz
+    reference: /mnt/data5/sarah/aDNA/Dmel_NCBI/raw/ref/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fa  
+  

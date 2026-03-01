@@ -2,10 +2,9 @@
 .Rhistory
 .RData
 aDNA.code-workspace
-*/raw/
-*/processed/
-*/logs/
-*/results/
+raw/
+processed/
+logs/
 results/
 __pycache__
 sequencing_data/

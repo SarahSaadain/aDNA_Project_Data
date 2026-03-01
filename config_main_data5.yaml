@@ -61,5 +61,27 @@ pipeline:
 species:
   Bger:
     name: "Blattella germanica"
-#  Dbus:
-#    name: "Drosophila busckii"
+  Bgerendosymbiont:
+    name: "Blattella germanica endosymbiont"
+  Clup:
+    name: "?"
+  Cpip:
+    name: "Culex pipiens"
+  Dbus:
+    name: "Drosophila busckii"
+  Dfun:
+    name: "Drosophila funebris"
+  Dhis:
+    name: "Drosophila histrio"
+  Dimm:
+    name: "Drosophila immigrans"
+  Dmel:
+    name: "Drosophila melanogaster"
+  DmelNCBI:
+    name: "Drosophila melanogaster"
+  Drep:
+    name: "Drosophila repleta"
+  Dsim:
+    name: "Drosophila simulans"
+  Mmus:
+    name: "Mus musculus"

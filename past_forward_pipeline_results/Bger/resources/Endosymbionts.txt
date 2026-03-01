@@ -1,0 +1,17 @@
+Bger_endosymbionts.fasta    alle_Blattabacteria ncbi
+Blattabacteria_GCA_000022605.2.fasta.gz current_refgenome   ENA
+CP001487.1.fasta    one_refgenome_omplete   ENA Project_ID_31103
+AJ439995.1.fasta    partial_groEL_gene  ENA
+LC537906.1.fasta    gene_for_16S_ribosomal_RNA_partial_sequence ENA
+CP002849.1.fasta    plasmid_pBge_complete_sequence  ENA Project_ID_31103
+HG525137.1.fasta    tmRNA_gene  ENA
+AJ971712.1.fasta    Alboria_partial_16S_rRNA_gene   ENA
+HG786998.1.fasta    transfer-messenger_mRNA_Blatt_sp_Bge_single_chain_transcript    ENA
+
+from ENA Project ID 269497
+transcripts corresponding to all genes necessary for the synthesis of uric acid and its catabolism to urea, as well as for the synthesis of glutamine, asparagine, proline and glycine, i.e. the amino acids required by the endosymbiont
+
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR169/000/SRR1695500/SRR1695500.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR169/001/SRR1695501/SRR1695501.fastq.gz
+wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR169/009/SRR1695499/SRR1695499.fastq.gz
+

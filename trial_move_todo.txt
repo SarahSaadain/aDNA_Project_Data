@@ -1,0 +1,310 @@
+(base) roco@roco:/mnt/data5/sarah/aDNA$ ls trial_*/raw/reads
+trial_Bger/raw/reads:
+C1_D1_0_00_R1.fastq.gz  C2_D1_0_00_R1.fastq.gz  C3_D1_0_00_R1.fastq.gz  original
+C1_S1_0_00_R1.fastq.gz  C2_S1_0_00_R1.fastq.gz  C3_S1_0_00_R1.fastq.gz
+
+trial_Dbus/raw/reads:
+Dbus01_4trial_346618_S127_L001_R1_001.fastq.gz  Dbus06_4trial_346641_S150_L002_R2_001.fastq.gz
+Dbus01_4trial_346618_S127_L001_R2_001.fastq.gz  Dbus07_4trial_346612_S121_L001_R1_001.fastq.gz
+Dbus01_4trial_346618_S127_L002_R1_001.fastq.gz  Dbus07_4trial_346612_S121_L001_R2_001.fastq.gz
+Dbus01_4trial_346618_S127_L002_R2_001.fastq.gz  Dbus07_4trial_346612_S121_L002_R1_001.fastq.gz
+Dbus02_4trial_346648_S157_L001_R1_001.fastq.gz  Dbus07_4trial_346612_S121_L002_R2_001.fastq.gz
+Dbus02_4trial_346648_S157_L001_R2_001.fastq.gz  Dbus08_4trial_346628_S137_L001_R1_001.fastq.gz
+Dbus02_4trial_346648_S157_L002_R1_001.fastq.gz  Dbus08_4trial_346628_S137_L001_R2_001.fastq.gz
+Dbus02_4trial_346648_S157_L002_R2_001.fastq.gz  Dbus08_4trial_346628_S137_L002_R1_001.fastq.gz
+Dbus03_4trial_346647_S156_L001_R1_001.fastq.gz  Dbus08_4trial_346628_S137_L002_R2_001.fastq.gz
+Dbus03_4trial_346647_S156_L001_R2_001.fastq.gz  Dbus09_4trial_346644_S153_L001_R1_001.fastq.gz
+Dbus03_4trial_346647_S156_L002_R1_001.fastq.gz  Dbus09_4trial_346644_S153_L001_R2_001.fastq.gz
+Dbus03_4trial_346647_S156_L002_R2_001.fastq.gz  Dbus09_4trial_346644_S153_L002_R1_001.fastq.gz
+Dbus04_4trial_346636_S145_L001_R1_001.fastq.gz  Dbus09_4trial_346644_S153_L002_R2_001.fastq.gz
+Dbus04_4trial_346636_S145_L001_R2_001.fastq.gz  Dbus10_4trial_346645_S154_L001_R1_001.fastq.gz
+Dbus04_4trial_346636_S145_L002_R1_001.fastq.gz  Dbus10_4trial_346645_S154_L001_R2_001.fastq.gz
+Dbus04_4trial_346636_S145_L002_R2_001.fastq.gz  Dbus10_4trial_346645_S154_L002_R1_001.fastq.gz
+Dbus05_4trial_346626_S135_L001_R1_001.fastq.gz  Dbus10_4trial_346645_S154_L002_R2_001.fastq.gz
+Dbus05_4trial_346626_S135_L001_R2_001.fastq.gz  DbusLB_4trial_346622_S131_L001_R1_001.fastq.gz
+Dbus05_4trial_346626_S135_L002_R1_001.fastq.gz  DbusLB_4trial_346622_S131_L001_R2_001.fastq.gz
+Dbus05_4trial_346626_S135_L002_R2_001.fastq.gz  DbusLB_4trial_346622_S131_L002_R1_001.fastq.gz
+Dbus06_4trial_346641_S150_L001_R1_001.fastq.gz  DbusLB_4trial_346622_S131_L002_R2_001.fastq.gz
+Dbus06_4trial_346641_S150_L001_R2_001.fastq.gz  original
+Dbus06_4trial_346641_S150_L002_R1_001.fastq.gz
+
+trial_Dfun/raw/reads:
+Dfun01_4trial_346608_S117_L001_R1_001.fastq.gz  Dfun06_4trial_346625_S134_L002_R2_001.fastq.gz
+Dfun01_4trial_346608_S117_L001_R2_001.fastq.gz  Dfun07_4trial_346623_S132_L001_R1_001.fastq.gz
+Dfun01_4trial_346608_S117_L002_R1_001.fastq.gz  Dfun07_4trial_346623_S132_L001_R2_001.fastq.gz
+Dfun01_4trial_346608_S117_L002_R2_001.fastq.gz  Dfun07_4trial_346623_S132_L002_R1_001.fastq.gz
+Dfun02_4trial_346630_S139_L001_R1_001.fastq.gz  Dfun07_4trial_346623_S132_L002_R2_001.fastq.gz
+Dfun02_4trial_346630_S139_L001_R2_001.fastq.gz  Dfun08_4trial_346607_S116_L001_R1_001.fastq.gz
+Dfun02_4trial_346630_S139_L002_R1_001.fastq.gz  Dfun08_4trial_346607_S116_L001_R2_001.fastq.gz
+Dfun02_4trial_346630_S139_L002_R2_001.fastq.gz  Dfun08_4trial_346607_S116_L002_R1_001.fastq.gz
+Dfun03_4trial_346614_S123_L001_R1_001.fastq.gz  Dfun08_4trial_346607_S116_L002_R2_001.fastq.gz
+Dfun03_4trial_346614_S123_L001_R2_001.fastq.gz  Dfun09_4trial_346610_S119_L001_R1_001.fastq.gz
+Dfun03_4trial_346614_S123_L002_R1_001.fastq.gz  Dfun09_4trial_346610_S119_L001_R2_001.fastq.gz
+Dfun03_4trial_346614_S123_L002_R2_001.fastq.gz  Dfun09_4trial_346610_S119_L002_R1_001.fastq.gz
+Dfun04_4trial_346611_S120_L001_R1_001.fastq.gz  Dfun09_4trial_346610_S119_L002_R2_001.fastq.gz
+Dfun04_4trial_346611_S120_L001_R2_001.fastq.gz  Dfun10_4trial_346624_S133_L001_R1_001.fastq.gz
+Dfun04_4trial_346611_S120_L002_R1_001.fastq.gz  Dfun10_4trial_346624_S133_L001_R2_001.fastq.gz
+Dfun04_4trial_346611_S120_L002_R2_001.fastq.gz  Dfun10_4trial_346624_S133_L002_R1_001.fastq.gz
+Dfun05_4trial_346620_S129_L001_R1_001.fastq.gz  Dfun10_4trial_346624_S133_L002_R2_001.fastq.gz
+Dfun05_4trial_346620_S129_L001_R2_001.fastq.gz  DfunLB_4trial_346632_S141_L001_R1_001.fastq.gz
+Dfun05_4trial_346620_S129_L002_R1_001.fastq.gz  DfunLB_4trial_346632_S141_L001_R2_001.fastq.gz
+Dfun05_4trial_346620_S129_L002_R2_001.fastq.gz  DfunLB_4trial_346632_S141_L002_R1_001.fastq.gz
+Dfun06_4trial_346625_S134_L001_R1_001.fastq.gz  DfunLB_4trial_346632_S141_L002_R2_001.fastq.gz
+Dfun06_4trial_346625_S134_L001_R2_001.fastq.gz  original
+Dfun06_4trial_346625_S134_L002_R1_001.fastq.gz
+
+trial_Dhis/raw/reads:
+Dhis01_4trial_346629_S138_L001_R1_001.fastq.gz  Dhis04_4trial_346615_S124_L001_R2_001.fastq.gz
+Dhis01_4trial_346629_S138_L001_R2_001.fastq.gz  Dhis04_4trial_346615_S124_L002_R1_001.fastq.gz
+Dhis01_4trial_346629_S138_L002_R1_001.fastq.gz  Dhis04_4trial_346615_S124_L002_R2_001.fastq.gz
+Dhis01_4trial_346629_S138_L002_R2_001.fastq.gz  Dhis05_4trial_346627_S136_L001_R1_001.fastq.gz
+Dhis02_4trial_346617_S126_L001_R1_001.fastq.gz  Dhis05_4trial_346627_S136_L001_R2_001.fastq.gz
+Dhis02_4trial_346617_S126_L001_R2_001.fastq.gz  Dhis05_4trial_346627_S136_L002_R1_001.fastq.gz
+Dhis02_4trial_346617_S126_L002_R1_001.fastq.gz  Dhis05_4trial_346627_S136_L002_R2_001.fastq.gz
+Dhis02_4trial_346617_S126_L002_R2_001.fastq.gz  DhisLB_4trial_346639_S148_L001_R1_001.fastq.gz
+Dhis03_4trial_346634_S143_L001_R1_001.fastq.gz  DhisLB_4trial_346639_S148_L001_R2_001.fastq.gz
+Dhis03_4trial_346634_S143_L001_R2_001.fastq.gz  DhisLB_4trial_346639_S148_L002_R1_001.fastq.gz
+Dhis03_4trial_346634_S143_L002_R1_001.fastq.gz  DhisLB_4trial_346639_S148_L002_R2_001.fastq.gz
+Dhis03_4trial_346634_S143_L002_R2_001.fastq.gz  original
+Dhis04_4trial_346615_S124_L001_R1_001.fastq.gz
+
+trial_Dimm/raw/reads:
+Dimm01_4trial_346606_S115_L001_R1_001.fastq.gz  Dimm04_4trial_346600_S113_L001_R2_001.fastq.gz
+Dimm01_4trial_346606_S115_L001_R2_001.fastq.gz  Dimm04_4trial_346600_S113_L002_R1_001.fastq.gz
+Dimm01_4trial_346606_S115_L002_R1_001.fastq.gz  Dimm04_4trial_346600_S113_L002_R2_001.fastq.gz
+Dimm01_4trial_346606_S115_L002_R2_001.fastq.gz  Dimm05_4trial_346603_S114_L001_R1_001.fastq.gz
+Dimm02_4trial_346609_S118_L001_R1_001.fastq.gz  Dimm05_4trial_346603_S114_L001_R2_001.fastq.gz
+Dimm02_4trial_346609_S118_L001_R2_001.fastq.gz  Dimm05_4trial_346603_S114_L002_R1_001.fastq.gz
+Dimm02_4trial_346609_S118_L002_R1_001.fastq.gz  Dimm05_4trial_346603_S114_L002_R2_001.fastq.gz
+Dimm02_4trial_346609_S118_L002_R2_001.fastq.gz  DimmLB_4trial_346635_S144_L001_R1_001.fastq.gz
+Dimm03_4trial_346621_S130_L001_R1_001.fastq.gz  DimmLB_4trial_346635_S144_L001_R2_001.fastq.gz
+Dimm03_4trial_346621_S130_L001_R2_001.fastq.gz  DimmLB_4trial_346635_S144_L002_R1_001.fastq.gz
+Dimm03_4trial_346621_S130_L002_R1_001.fastq.gz  DimmLB_4trial_346635_S144_L002_R2_001.fastq.gz
+Dimm03_4trial_346621_S130_L002_R2_001.fastq.gz  original
+Dimm04_4trial_346600_S113_L001_R1_001.fastq.gz
+
+trial_Dmel/raw/reads:
+Dmel_10_R1.fastq.gz  Dmel_2_R1.fastq.gz  Dmel_4_R1.fastq.gz  Dmel_6_R1.fastq.gz  Dmel_8_R1.fastq.gz
+Dmel_10_R2.fastq.gz  Dmel_2_R2.fastq.gz  Dmel_4_R2.fastq.gz  Dmel_6_R2.fastq.gz  Dmel_8_R2.fastq.gz
+Dmel_1_R1.fastq.gz   Dmel_3_R1.fastq.gz  Dmel_5_R1.fastq.gz  Dmel_7_R1.fastq.gz  Dmel_9_R1.fastq.gz
+Dmel_1_R2.fastq.gz   Dmel_3_R2.fastq.gz  Dmel_5_R2.fastq.gz  Dmel_7_R2.fastq.gz  Dmel_9_R2.fastq.gz
+
+trial_Drep/raw/reads:
+Drep01_4trial_346637_S146_L001_R1_001.fastq.gz  Drep07_4trial_346638_S147_L001_R2_001.fastq.gz
+Drep01_4trial_346637_S146_L001_R2_001.fastq.gz  Drep07_4trial_346638_S147_L002_R1_001.fastq.gz
+Drep01_4trial_346637_S146_L002_R1_001.fastq.gz  Drep07_4trial_346638_S147_L002_R2_001.fastq.gz
+Drep01_4trial_346637_S146_L002_R2_001.fastq.gz  Drep08_4trial_346643_S152_L001_R1_001.fastq.gz
+Drep02_4trial_346631_S140_L001_R1_001.fastq.gz  Drep08_4trial_346643_S152_L001_R2_001.fastq.gz
+Drep02_4trial_346631_S140_L001_R2_001.fastq.gz  Drep08_4trial_346643_S152_L002_R1_001.fastq.gz
+Drep02_4trial_346631_S140_L002_R1_001.fastq.gz  Drep08_4trial_346643_S152_L002_R2_001.fastq.gz
+Drep02_4trial_346631_S140_L002_R2_001.fastq.gz  Drep09_4trial_346640_S149_L001_R1_001.fastq.gz
+Drep03_4trial_346642_S151_L001_R1_001.fastq.gz  Drep09_4trial_346640_S149_L001_R2_001.fastq.gz
+Drep03_4trial_346642_S151_L001_R2_001.fastq.gz  Drep09_4trial_346640_S149_L002_R1_001.fastq.gz
+Drep03_4trial_346642_S151_L002_R1_001.fastq.gz  Drep09_4trial_346640_S149_L002_R2_001.fastq.gz
+Drep03_4trial_346642_S151_L002_R2_001.fastq.gz  Drep10_4trial_346619_S128_L001_R1_001.fastq.gz
+Drep04_4trial_346616_S125_L001_R1_001.fastq.gz  Drep10_4trial_346619_S128_L001_R2_001.fastq.gz
+Drep04_4trial_346616_S125_L001_R2_001.fastq.gz  Drep10_4trial_346619_S128_L002_R1_001.fastq.gz
+Drep04_4trial_346616_S125_L002_R1_001.fastq.gz  Drep10_4trial_346619_S128_L002_R2_001.fastq.gz
+Drep04_4trial_346616_S125_L002_R2_001.fastq.gz  DrepLB_4trial_346613_S122_L001_R1_001.fastq.gz
+Drep05_4trial_346633_S142_L001_R1_001.fastq.gz  DrepLB_4trial_346613_S122_L001_R2_001.fastq.gz
+Drep05_4trial_346633_S142_L001_R2_001.fastq.gz  DrepLB_4trial_346613_S122_L002_R1_001.fastq.gz
+Drep05_4trial_346633_S142_L002_R1_001.fastq.gz  DrepLB_4trial_346613_S122_L002_R2_001.fastq.gz
+Drep05_4trial_346633_S142_L002_R2_001.fastq.gz  original
+Drep07_4trial_346638_S147_L001_R1_001.fastq.gz
+
+trial_Dsim/raw/reads:
+1trial                                    Dsim06_2trial_344231_S23_R1_001.fastq.gz  Dsim12_2trial_344237_S29_R1_001.fastq.gz
+2trial                                    Dsim06_2trial_344231_S23_R2_001.fastq.gz  Dsim12_2trial_344237_S29_R2_001.fastq.gz
+Dsim01_1trial_340150_S26_R1_001.fastq.gz  Dsim07_1trial_340132_S8_R1_001.fastq.gz   Dsim13_1trial_340145_S21_R1_001.fastq.gz
+Dsim01_2trial_344234_S26_R1_001.fastq.gz  Dsim07_2trial_344216_S8_R1_001.fastq.gz   Dsim13_2trial_344229_S21_R1_001.fastq.gz
+Dsim01_2trial_344234_S26_R2_001.fastq.gz  Dsim07_2trial_344216_S8_R2_001.fastq.gz   Dsim13_2trial_344229_S21_R2_001.fastq.gz
+Dsim02_1trial_340151_S27_R1_001.fastq.gz  Dsim08_1trial_340139_S15_R1_001.fastq.gz  Dsim17_1trial_340143_S19_R1_001.fastq.gz
+Dsim02_2trial_344235_S27_R1_001.fastq.gz  Dsim08_2trial_344223_S15_R1_001.fastq.gz  Dsim17_2trial_344227_S19_R1_001.fastq.gz
+Dsim02_2trial_344235_S27_R2_001.fastq.gz  Dsim08_2trial_344223_S15_R2_001.fastq.gz  Dsim17_2trial_344227_S19_R2_001.fastq.gz
+Dsim03_1trial_340156_S32_R1_001.fastq.gz  Dsim09_1trial_340127_S3_R1_001.fastq.gz   Dsim18_1trial_340144_S20_R1_001.fastq.gz
+Dsim03_2trial_344240_S32_R1_001.fastq.gz  Dsim09_2trial_344211_S3_R1_001.fastq.gz   Dsim18_2trial_344228_S20_R1_001.fastq.gz
+Dsim03_2trial_344240_S32_R2_001.fastq.gz  Dsim09_2trial_344211_S3_R2_001.fastq.gz   Dsim18_2trial_344228_S20_R2_001.fastq.gz
+Dsim04_1trial_340126_S2_R1_001.fastq.gz   Dsim10_1trial_340140_S16_R1_001.fastq.gz  Dsim19_1trial_340125_S1_R1_001.fastq.gz
+Dsim04_2trial_344210_S2_R1_001.fastq.gz   Dsim10_2trial_344224_S16_R1_001.fastq.gz  Dsim19_2trial_344209_S1_R1_001.fastq.gz
+Dsim04_2trial_344210_S2_R2_001.fastq.gz   Dsim10_2trial_344224_S16_R2_001.fastq.gz  Dsim19_2trial_344209_S1_R2_001.fastq.gz
+Dsim05_1trial_340131_S7_R1_001.fastq.gz   Dsim11_1trial_340142_S18_R1_001.fastq.gz  Dsim20_1trial_340133_S9_R1_001.fastq.gz
+Dsim05_2trial_344215_S7_R1_001.fastq.gz   Dsim11_2trial_344226_S18_R1_001.fastq.gz  Dsim20_2trial_344217_S9_R1_001.fastq.gz
+Dsim05_2trial_344215_S7_R2_001.fastq.gz   Dsim11_2trial_344226_S18_R2_001.fastq.gz  Dsim20_2trial_344217_S9_R2_001.fastq.gz
+Dsim06_1trial_340147_S23_R1_001.fastq.gz  Dsim12_1trial_340153_S29_R1_001.fastq.gz
+
+trial_LB/raw/reads:
+1trial                                           libraryblank1_2trial_344232_S24_R2_001.fastq.gz
+2trial                                           libraryblank2_1trial_340152_S28_R1_001.fastq.gz
+libraryblank1_1trial_340148_S24_R1_001.fastq.gz  libraryblank2_2trial_344236_S28_R1_001.fastq.gz
+libraryblank1_2trial_344232_S24_R1_001.fastq.gz  libraryblank2_2trial_344236_S28_R2_001.fastq.gz
+
+trial_Mmus/raw/reads:
+326862_S37_R1_001.fastq.gz  326863_S38_R2_001.fastq.gz  326865_S40_R1_001.fastq.gz  326866_S41_R2_001.fastq.gz
+326862_S37_R2_001.fastq.gz  326864_S39_R1_001.fastq.gz  326865_S40_R2_001.fastq.gz  326867_S42_R1_001.fastq.gz
+326863_S38_R1_001.fastq.gz  326864_S39_R2_001.fastq.gz  326866_S41_R1_001.fastq.gz  326867_S42_R2_001.fastq.gz
+
+trial_Phortica/raw/reads:
+1trial                                    Phor02_2trial_344212_S4_R2_001.fastq.gz   Phor05_1trial_340129_S5_R1_001.fastq.gz
+2trial                                    Phor03_1trial_340137_S13_R1_001.fastq.gz  Phor05_2trial_344213_S5_R1_001.fastq.gz
+Phor01_1trial_340136_S12_R1_001.fastq.gz  Phor03_2trial_344221_S13_R1_001.fastq.gz  Phor05_2trial_344213_S5_R2_001.fastq.gz
+Phor01_2trial_344220_S12_R1_001.fastq.gz  Phor03_2trial_344221_S13_R2_001.fastq.gz  Phor06_1trial_340135_S11_R1_001.fastq.gz
+Phor01_2trial_344220_S12_R2_001.fastq.gz  Phor04_1trial_340138_S14_R1_001.fastq.gz  Phor06_2trial_344219_S11_R1_001.fastq.gz
+Phor02_1trial_340128_S4_R1_001.fastq.gz   Phor04_2trial_344222_S14_R1_001.fastq.gz  Phor06_2trial_344219_S11_R2_001.fastq.gz
+Phor02_2trial_344212_S4_R1_001.fastq.gz   Phor04_2trial_344222_S14_R2_001.fastq.gz
+
+trial_Sepsis/raw/reads:
+1trial  SepsA_1trial_340154_S30_R1_001.fastq.gz  SepsA_2trial_344238_S30_R2_001.fastq.gz  SepsQ_2trial_344239_S31_R1_001.fastq.gz
+2trial  SepsA_2trial_344238_S30_R1_001.fastq.gz  SepsQ_1trial_340155_S31_R1_001.fastq.gz  SepsQ_2trial_344239_S31_R2_001.fastq.gz
+
+
+(base) roco@roco:/mnt/data5/sarah/aDNA$ ls /mnt/data2/sarah/trial_adna_pipeline/t*/raw/reads
+/mnt/data2/sarah/trial_adna_pipeline/tBger/raw/reads:
+tBger04h_360511_S137_R1_001.fastq.gz  tBger06r_360465_S91_R1_001.fastq.gz   tBger09n_360516_S142_R1_001.fastq.gz
+tBger04h_360511_S137_R2_001.fastq.gz  tBger06r_360465_S91_R2_001.fastq.gz   tBger09n_360516_S142_R2_001.fastq.gz
+tBger04n_360468_S94_R1_001.fastq.gz   tBger07h_360508_S134_R1_001.fastq.gz  tBger09r_360481_S107_R1_001.fastq.gz
+tBger04n_360468_S94_R2_001.fastq.gz   tBger07h_360508_S134_R2_001.fastq.gz  tBger09r_360481_S107_R2_001.fastq.gz
+tBger04r_360506_S132_R1_001.fastq.gz  tBger07n_360510_S136_R1_001.fastq.gz  tBger10h_360526_S152_R1_001.fastq.gz
+tBger04r_360506_S132_R2_001.fastq.gz  tBger07n_360510_S136_R2_001.fastq.gz  tBger10h_360526_S152_R2_001.fastq.gz
+tBger05h_360507_S133_R1_001.fastq.gz  tBger07r_360466_S92_R1_001.fastq.gz   tBger10n_360467_S93_R1_001.fastq.gz
+tBger05h_360507_S133_R2_001.fastq.gz  tBger07r_360466_S92_R2_001.fastq.gz   tBger10n_360467_S93_R2_001.fastq.gz
+tBger05n_360509_S135_R1_001.fastq.gz  tBger08h_360519_S145_R1_001.fastq.gz  tBger10r_360478_S104_R1_001.fastq.gz
+tBger05n_360509_S135_R2_001.fastq.gz  tBger08h_360519_S145_R2_001.fastq.gz  tBger10r_360478_S104_R2_001.fastq.gz
+tBger05r_360452_S78_R1_001.fastq.gz   tBger08n_360480_S106_R1_001.fastq.gz  tBger11h_360518_S144_R1_001.fastq.gz
+tBger05r_360452_S78_R2_001.fastq.gz   tBger08n_360480_S106_R2_001.fastq.gz  tBger11h_360518_S144_R2_001.fastq.gz
+tBger06h_360514_S140_R1_001.fastq.gz  tBger08r_360517_S143_R1_001.fastq.gz  tBger11n_360503_S129_R1_001.fastq.gz
+tBger06h_360514_S140_R2_001.fastq.gz  tBger08r_360517_S143_R2_001.fastq.gz  tBger11n_360503_S129_R2_001.fastq.gz
+tBger06n_360479_S105_R1_001.fastq.gz  tBger09h_360512_S138_R1_001.fastq.gz  tBger11r_360488_S114_R1_001.fastq.gz
+tBger06n_360479_S105_R2_001.fastq.gz  tBger09h_360512_S138_R2_001.fastq.gz  tBger11r_360488_S114_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tBgerRun1/raw/reads:
+C1_D1_0_00_R1.fastq.gz  C2_D1_0_00_R1.fastq.gz  C3_D1_0_00_R1.fastq.gz  original
+C1_S1_0_00_R1.fastq.gz  C2_S1_0_00_R1.fastq.gz  C3_S1_0_00_R1.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDana/raw/reads:
+tDana01_Smithsonian_360504_S130_R1_001.fastq.gz  tDana02_Smithsonian_360476_S102_R2_001.fastq.gz
+tDana01_Smithsonian_360504_S130_R2_001.fastq.gz  tDana03_Smithsonian_360500_S126_R1_001.fastq.gz
+tDana02_Smithsonian_360476_S102_R1_001.fastq.gz  tDana03_Smithsonian_360500_S126_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDbus/raw/reads:
+tDbus01_Smithsonian_360462_S88_R1_001.fastq.gz  tDbus02_Smithsonian_360473_S99_R2_001.fastq.gz
+tDbus01_Smithsonian_360462_S88_R2_001.fastq.gz  tDbus03_Smithsonian_360454_S80_R1_001.fastq.gz
+tDbus02_Smithsonian_360473_S99_R1_001.fastq.gz  tDbus03_Smithsonian_360454_S80_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDcar/raw/reads:
+problems                                         tDcar05_Smithsonian_360455_S81_R2_001.fastq.gz
+tDcar01_Smithsonian_360450_S76_R1_001.fastq.gz   tDcar06_Smithsonian_360460_S86_R1_001.fastq.gz
+tDcar01_Smithsonian_360450_S76_R2_001.fastq.gz   tDcar06_Smithsonian_360460_S86_R2_001.fastq.gz
+tDcar02_Smithsonian_360487_S113_R1_001.fastq.gz  tDcar07_Smithsonian_360459_S85_R1_001.fastq.gz
+tDcar02_Smithsonian_360487_S113_R2_001.fastq.gz  tDcar07_Smithsonian_360459_S85_R2_001.fastq.gz
+tDcar04_Smithsonian_360456_S82_R1_001.fastq.gz   tDcar08_Smithsonian_360451_S77_R1_001.fastq.gz
+tDcar04_Smithsonian_360456_S82_R2_001.fastq.gz   tDcar08_Smithsonian_360451_S77_R2_001.fastq.gz
+tDcar05_Smithsonian_360455_S81_R1_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDfun/raw/reads:
+problems                                         tDfun02_Smithsonian_360458_S84_R1_001.fastq.gz
+tDfun01_Smithsonian_360520_S146_R1_001.fastq.gz  tDfun02_Smithsonian_360458_S84_R2_001.fastq.gz
+tDfun01_Smithsonian_360520_S146_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDimm/raw/reads:
+tDimm01_Smithsonian_360498_S124_R1_001.fastq.gz  tDimm03_Smithsonian_360457_S83_R2_001.fastq.gz
+tDimm01_Smithsonian_360498_S124_R2_001.fastq.gz  tDimm04_Smithsonian_360513_S139_R1_001.fastq.gz
+tDimm02_Smithsonian_360485_S111_R1_001.fastq.gz  tDimm04_Smithsonian_360513_S139_R2_001.fastq.gz
+tDimm02_Smithsonian_360485_S111_R2_001.fastq.gz  tDimm05_Smithsonian_360463_S89_R1_001.fastq.gz
+tDimm03_Smithsonian_360457_S83_R1_001.fastq.gz   tDimm05_Smithsonian_360463_S89_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDmel/raw/reads:
+tDmel00NEB_extraction_blank_8_M0_L1_R1_1.fastq.gz    tDmel07N_NHM_30_M7_L1_R2_2.fastq.gz
+tDmel00NEB_extraction_blank_8_M0_L1_R2_2.fastq.gz    tDmel07S_Smithsonian_35_ML7_L1_R1_1.fastq.gz
+tDmel01N_NHM_15_M1_L1_R1_1.fastq.gz                  tDmel07S_Smithsonian_35_ML7_L1_R2_2.fastq.gz
+tDmel01N_NHM_15_M1_L1_R2_2.fastq.gz                  tDmel08N_NHM_12_M8_L1_R1_1.fastq.gz
+tDmel01S_Smithsonian_17_ML1_L1_R1_1.fastq.gz         tDmel08N_NHM_12_M8_L1_R2_2.fastq.gz
+tDmel01S_Smithsonian_17_ML1_L1_R2_2.fastq.gz         tDmel09N_NHM_29_M9_L1_R1_1.fastq.gz
+tDmel02NEB_extraction_blank_13_M02_L1_R1_1.fastq.gz  tDmel09N_NHM_29_M9_L1_R2_2.fastq.gz
+tDmel02NEB_extraction_blank_13_M02_L1_R2_2.fastq.gz  tDmel10N_NHM_5_M10_L1_R1_1.fastq.gz
+tDmel02N_NHM_19_M2_L1_R1_1.fastq.gz                  tDmel10N_NHM_5_M10_L1_R2_2.fastq.gz
+tDmel02N_NHM_19_M2_L1_R2_2.fastq.gz                  tDmel11N_NHM_18_M11_L1_R1_1.fastq.gz
+tDmel02S_Smithsonian_28_ML2_L1_R1_1.fastq.gz         tDmel11N_NHM_18_M11_L1_R2_2.fastq.gz
+tDmel02S_Smithsonian_28_ML2_L1_R2_2.fastq.gz         tDmel12N_NHM_16_M12_L1_R1_1.fastq.gz
+tDmel03N_NHM_24_M3_L1_R1_1.fastq.gz                  tDmel12N_NHM_16_M12_L1_R2_2.fastq.gz
+tDmel03N_NHM_24_M3_L1_R2_2.fastq.gz                  tDmel13N_NHM_33_M13_L1_R1_1.fastq.gz
+tDmel03S_Smithsonian_34_ML3_L1_R1_1.fastq.gz         tDmel13N_NHM_33_M13_L1_R2_2.fastq.gz
+tDmel03S_Smithsonian_34_ML3_L1_R2_2.fastq.gz         tDmel14N_NHM_32_M14_L1_R1_1.fastq.gz
+tDmel04N_NHM_3_M4_L1_R1_1.fastq.gz                   tDmel14N_NHM_32_M14_L1_R2_2.fastq.gz
+tDmel04N_NHM_3_M4_L1_R2_2.fastq.gz                   tDmel15N_NHM_2_M15_L1_R1_1.fastq.gz
+tDmel04S_Smithsonian_27_ML4_L1_R1_1.fastq.gz         tDmel15N_NHM_2_M15_L1_R2_2.fastq.gz
+tDmel04S_Smithsonian_27_ML4_L1_R2_2.fastq.gz         tDmel16N_NHM_26_M16_L1_R1_1.fastq.gz
+tDmel05N_NHM_4_M5_L1_R1_1.fastq.gz                   tDmel16N_NHM_26_M16_L1_R2_2.fastq.gz
+tDmel05N_NHM_4_M5_L1_R2_2.fastq.gz                   tDmel17N_NHM_22_M17_L1_R1_1.fastq.gz
+tDmel05S_Smithsonian_7_ML5_L1_R1_1.fastq.gz          tDmel17N_NHM_22_M17_L1_R2_2.fastq.gz
+tDmel05S_Smithsonian_7_ML5_L1_R2_2.fastq.gz          tDmel18N_NHM_20_M18_L1_R1_1.fastq.gz
+tDmel06N_NHM_25_M6_L1_R1_1.fastq.gz                  tDmel18N_NHM_20_M18_L1_R2_2.fastq.gz
+tDmel06N_NHM_25_M6_L1_R2_2.fastq.gz                  tDmel19N_NHM_57_M19_L1_R1_1.fastq.gz
+tDmel06S_Smithsonian_36_ML6_L1_R1_1.fastq.gz         tDmel19N_NHM_57_M19_L1_R2_2.fastq.gz
+tDmel06S_Smithsonian_36_ML6_L1_R2_2.fastq.gz         tDmel20N_NHM_1_M20_L1_R1_1.fastq.gz
+tDmel07N_NHM_30_M7_L1_R1_1.fastq.gz                  tDmel20N_NHM_1_M20_L1_R2_2.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDmer/raw/reads:
+tDmer01_Smithsonian_360461_S87_R1_001.fastq.gz  tDmer02_Smithsonian_360505_S131_R1_001.fastq.gz
+tDmer01_Smithsonian_360461_S87_R2_001.fastq.gz  tDmer02_Smithsonian_360505_S131_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDrep/raw/reads:
+problems                                        tDrep04_Smithsonian_360521_S147_R1_001.fastq.gz
+tDrep01_Smithsonian_360449_S75_R1_001.fastq.gz  tDrep04_Smithsonian_360521_S147_R2_001.fastq.gz
+tDrep01_Smithsonian_360449_S75_R2_001.fastq.gz  tDrep05_Smithsonian_360475_S101_R1_001.fastq.gz
+tDrep02_Smithsonian_360448_S74_R1_001.fastq.gz  tDrep05_Smithsonian_360475_S101_R2_001.fastq.gz
+tDrep02_Smithsonian_360448_S74_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tDwil/raw/reads:
+tDwil01_Smithsonian_360472_S98_R1_001.fastq.gz  tDwil02_Smithsonian_360447_S73_R2_001.fastq.gz
+tDwil01_Smithsonian_360472_S98_R2_001.fastq.gz  tDwil03_Smithsonian_360474_S100_R1_001.fastq.gz
+tDwil02_Smithsonian_360447_S73_R1_001.fastq.gz  tDwil03_Smithsonian_360474_S100_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tLibblank/raw/reads:
+LB-B3-1_lib_blank_55_LB_B3-1_L1_R1_1.fastq.gz  LB-B3-5_lib_blank_52_LB_B3-5_L1_R1_1.fastq.gz
+LB-B3-1_lib_blank_55_LB_B3-1_L1_R2_2.fastq.gz  LB-B3-5_lib_blank_52_LB_B3-5_L1_R2_2.fastq.gz
+LB-B3-2_lib_blank_49_LB_B3-2_L1_R1_1.fastq.gz  LB-B3-6_lib_blank_53_LB_B3-6_L1_R1_1.fastq.gz
+LB-B3-2_lib_blank_49_LB_B3-2_L1_R2_2.fastq.gz  LB-B3-6_lib_blank_53_LB_B3-6_L1_R2_2.fastq.gz
+LB-B3-3_lib_blank_58_LB_B3-3_L1_R1_1.fastq.gz  LB-B3-7_lib_blank_54_LB_B3-7_L1_R1_1.fastq.gz
+LB-B3-3_lib_blank_58_LB_B3-3_L1_R2_2.fastq.gz  LB-B3-7_lib_blank_54_LB_B3-7_L1_R2_2.fastq.gz
+LB-B3-4_lib_blank_51_LB_B3-4_L1_R1_1.fastq.gz  LB-B3-8_lib_blank_14_LB_B3-8_L1_R1_1.fastq.gz
+LB-B3-4_lib_blank_51_LB_B3-4_L1_R2_2.fastq.gz  LB-B3-8_lib_blank_14_LB_B3-8_L1_R2_2.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tLlit/raw/reads:
+tLlit00regular_360493_S119_R1_001.fastq.gz  tLlit06low_360496_S122_R1_001.fastq.gz       tLlit09regular_360495_S121_R1_001.fastq.gz
+tLlit00regular_360493_S119_R2_001.fastq.gz  tLlit06low_360496_S122_R2_001.fastq.gz       tLlit09regular_360495_S121_R2_001.fastq.gz
+tLlit02low_360482_S108_R1_001.fastq.gz      tLlit06regular_360494_S120_R1_001.fastq.gz   tLlit12low_360497_S123_R1_001.fastq.gz
+tLlit02low_360482_S108_R2_001.fastq.gz      tLlit06regular_360494_S120_R2_001.fastq.gz   tLlit12low_360497_S123_R2_001.fastq.gz
+tLlit02regular_360470_S96_R1_001.fastq.gz   tLlit06sediment_360491_S117_R1_001.fastq.gz  tLlit12regular_360489_S115_R1_001.fastq.gz
+tLlit02regular_360470_S96_R2_001.fastq.gz   tLlit06sediment_360491_S117_R2_001.fastq.gz  tLlit12regular_360489_S115_R2_001.fastq.gz
+tLlit02sediment_360453_S79_R1_001.fastq.gz  tLlit09low_360490_S116_R1_001.fastq.gz
+tLlit02sediment_360453_S79_R2_001.fastq.gz  tLlit09low_360490_S116_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tOcap/raw/reads:
+tOcap00_trial_pupae_360471_S97_R1_001.fastq.gz   tOcap02_trial_pupae_360477_S103_R2_001.fastq.gz
+tOcap00_trial_pupae_360471_S97_R2_001.fastq.gz   tOcap02_trial_pupae_360483_S109_R1_001.fastq.gz
+tOcap01_trial_pupae_360484_S110_R1_001.fastq.gz  tOcap02_trial_pupae_360483_S109_R2_001.fastq.gz
+tOcap01_trial_pupae_360484_S110_R2_001.fastq.gz  tOcap04_trial_pupae_360464_S90_R1_001.fastq.gz
+tOcap02_trial_pupae_360477_S103_R1_001.fastq.gz  tOcap04_trial_pupae_360464_S90_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tPhum/raw/reads:
+PhumL3337_340164_R1.fastq.gz  PhumL3338_340165_R1.fastq.gz  PhumL3339_340166_R1.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tPvul/raw/reads:
+tPvul02_regular_input_360515_S141_R1_001.fastq.gz  tPvul09_regular_input_360446_S72_R1_001.fastq.gz
+tPvul02_regular_input_360515_S141_R2_001.fastq.gz  tPvul09_regular_input_360446_S72_R2_001.fastq.gz
+tPvul06_regular_input_360469_S95_R1_001.fastq.gz   tPvul12_regular_input_360492_S118_R1_001.fastq.gz
+tPvul06_regular_input_360469_S95_R2_001.fastq.gz   tPvul12_regular_input_360492_S118_R2_001.fastq.gz
+
+/mnt/data2/sarah/trial_adna_pipeline/tTni/raw/reads:
+tTni0_NHM_11_T0_L1_R1_1.fastq.gz         tTni160_NHM_360528_S154_R2_001.fastq.gz  tTni166_NHM_9_T166_L1_R1_1.fastq.gz
+tTni0_NHM_11_T0_L1_R2_2.fastq.gz         tTni161_NHM_56_T161_L1_R1_1.fastq.gz     tTni166_NHM_9_T166_L1_R2_2.fastq.gz
+tTni156_NHM_360522_S148_R1_001.fastq.gz  tTni161_NHM_56_T161_L1_R2_2.fastq.gz     tTni167_NHM_10_T167_L1_R1_1.fastq.gz
+tTni156_NHM_360522_S148_R2_001.fastq.gz  tTni162_NHM_360524_S150_R1_001.fastq.gz  tTni167_NHM_10_T167_L1_R2_2.fastq.gz
+tTni157_NHM_360523_S149_R1_001.fastq.gz  tTni162_NHM_360524_S150_R2_001.fastq.gz  tTni168_NHM_360530_S156_R1_001.fastq.gz
+tTni157_NHM_360523_S149_R2_001.fastq.gz  tTni163_NHM_23_T163_L1_R1_1.fastq.gz     tTni168_NHM_360530_S156_R2_001.fastq.gz
+tTni158_NHM_360486_S112_R1_001.fastq.gz  tTni163_NHM_23_T163_L1_R2_2.fastq.gz     tTni169_NHM_360525_S151_R1_001.fastq.gz
+tTni158_NHM_360486_S112_R2_001.fastq.gz  tTni164_NHM_31_T164_L1_R1_1.fastq.gz     tTni169_NHM_360525_S151_R2_001.fastq.gz
+tTni159_NHM_360529_S155_R1_001.fastq.gz  tTni164_NHM_31_T164_L1_R2_2.fastq.gz     tTni170_NHM_21_T170_L1_R1_1.fastq.gz
+tTni159_NHM_360529_S155_R2_001.fastq.gz  tTni165_NHM_360527_S153_R1_001.fastq.gz  tTni170_NHM_21_T170_L1_R2_2.fastq.gz
+tTni160_NHM_360528_S154_R1_001.fastq.gz  tTni165_NHM_360527_S153_R2_001.fastq.gz
+(base) roco@roco:/mnt/data5/sarah/aDNA$ 
