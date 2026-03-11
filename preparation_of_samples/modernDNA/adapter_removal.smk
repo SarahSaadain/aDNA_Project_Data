@@ -41,20 +41,20 @@ rule remove_adapters_single_with_fastp:
         "{species}/logs/reads/reads_trimmed/{sample}_trimmed.se.log",
     params:
         adapters=lambda wc: (
-            f"--adapter_sequence {config['pipeline']['raw_reads_processing']['adapter_removal']['settings']['adapters_sequences']['r1']}"
-            if config['pipeline']['raw_reads_processing']['adapter_removal'].get('settings', {}).get('adapters_sequences', {}).get('r1')
+            f"--adapter_sequence {config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('adapters_sequences', {}).get('r1','')}"
+            if config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('adapters_sequences', {}).get('r1','')
             else ""
         ),  
         extra=lambda wc: (
-            f"--length_required {config['pipeline']['raw_reads_processing']['adapter_removal'].get('settings', {}).get('min_length',0)} "
+            f"--length_required {config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('min_length',0)} "
             f"--trim_poly_x 5 "
-            f"--qualified_quality_phred {config['pipeline']['raw_reads_processing']['adapter_removal'].get('settings', {}).get('min_quality',0)} "
+            f"--qualified_quality_phred {config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('min_quality',0)} "
             f"--unqualified_percent_limit 40 "
             f"--n_base_limit 5"
         ),
     threads: 10
     wrapper:
-        "v7.5.0/bio/fastp"
+        "v9.3.0/bio/fastp"
  
  
 # Rule: Adapter removal for paired-end reads using fastp
@@ -78,22 +78,23 @@ rule remove_adapters_paired_with_fastp:
         "{species}/logs/reads/reads_trimmed/{sample}_trimmed.pe.log",
     params:
         adapters=lambda wc: (
-            f"--adapter_sequence {config['pipeline']['raw_reads_processing']['adapter_removal']['settings']['adapters_sequences'].get('r1','')} "
-            f"--adapter_sequence_r2 {config['pipeline']['raw_reads_processing']['adapter_removal']['settings']['adapters_sequences'].get('r2','')}"
-            if config['pipeline']['raw_reads_processing']['adapter_removal'].get('settings', {}).get('adapters_sequences')
+            f"--adapter_sequence {config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('adapters_sequences', {}).get('r1','')} "
+            f"--adapter_sequence_r2 {config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('adapters_sequences', {}).get('r2','')}"
+            if config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('adapters_sequences')
             else "--detect_adapter_for_pe"
         ),
         extra=lambda wc: (
-            f"--length_required {config['pipeline']['raw_reads_processing']['adapter_removal'].get('settings', {}).get('min_length',0)} "
+            f"--length_required {config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('min_length',0)} "
             f"--correction "
-            f"--qualified_quality_phred {config['pipeline']['raw_reads_processing']['adapter_removal'].get('settings', {}).get('min_quality',0)} "
+            f"--qualified_quality_phred {config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('min_quality',0)} "
             f"--unqualified_percent_limit 40 "
             f"--n_base_limit 5 "
-            f"--merge"
+            f"--merge "
+            f"{config.get('pipeline', {}).get('raw_reads_processing', {}).get('adapter_removal', {}).get('settings', {}).get('extra_params', 0)}"
         ),   
     threads: 10
     wrapper:
-        "v7.5.0/bio/fastp"
+        "v9.3.0/bio/fastp"
 
 rule determine_reads_trimmed_final:
     input:
